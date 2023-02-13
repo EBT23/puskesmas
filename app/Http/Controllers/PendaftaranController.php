@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Symfony\Contracts\Service\Attribute\Required;
 
 class PendaftaranController extends Controller
@@ -42,4 +43,32 @@ class PendaftaranController extends Controller
 
         dd($input);
     }
+
+    public function kajian_awal(){
+
+        $data['title'] = 'kajian awal';
+        return view('pendaftaran.kajian_awal', $data);
+    }
+
+function kajianawalPost(Request $request){
+
+$data = [
+'status' => $request->status,
+'riwayat_penyakit_terdahulu' => $request->riwayat_penyakit_terdahulu,
+'riwayat_penyakit_keluarga' => $request->riwayat_penyakit_keluarga,
+'pengkajian_psikologis' => $request->pengkajian_psikologis,
+'riwayat_gangguan_jiwa' => $request->riwayat_gangguan_jiwa,
+'keluarga_gangguan_jiwa' => $request->keluarga_gangguan_jiwa,
+'tinggal_dengan' => $request-> tinggal_dengan,
+'hambatan_bahasa' => $request-> hambatan_bahasa,
+'hambatan_budaya' => $request-> hambatan_budaya,
+'hambatan_mobilitas' => $request-> hambatan_mobilitas,
+'date_created' => date('Y-m-d'),
+'update_created' => date('Y-m-d'),
+];
+DB::table('kajian_awal')->insert($data);
+
+return redirect()->route('kajian_awal');
+
+}
 }

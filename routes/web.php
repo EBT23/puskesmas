@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\PendaftaranController;
+use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\UserFormController;
 
 /*
@@ -42,6 +44,21 @@ Route::middleware(['auth'])->group(function () {
     ##Agus
     Route::get('/pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran');
     Route::post('pendaftaran', [PendaftaranController::class, 'pendaftaran_action'])->name('pendaftaran.action');
+
+    #Hamdi 
+    Route::get('/kajianawal', [PendaftaranController::class, 'kajian_awal'])->name('kajian_awal');
+    Route::post('/kajianawal', [PendaftaranController::class, 'kajianawalPost'])->name('kajian_awal.post');
+
+    //kelola jadwal dokter
+    Route::get('jadwal', [JadwalController::class, 'jadwal'])->name('jadwal');
+    Route::post('jadwal', [JadwalController::class, 'jadwalPost'])->name('jadwal.post');
+
+    //kelola penyakit
+    Route::get('penyakit', [PenyakitController::class, 'penyakit'])->name('penyakit');
+    Route::post('penyakit', [PenyakitController::class, 'penyakitPost'])->name('penyakit.post');
+
+
+
     ##Logout Dani
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
