@@ -9,7 +9,8 @@ class JadwalController extends Controller
 {
     public function jadwal(){
         $data['title'] = 'Jadwal';
-        return view('dashboard.jadwal',$data);
+        $jadwalDokter = DB::select('SELECT * from jadwal_dokter');
+        return view('dashboard.jadwal',['jadwalDokter' => $jadwalDokter,$data]);
     }
 
     function jadwalPost(Request $request){

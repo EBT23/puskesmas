@@ -63,8 +63,8 @@ $data = [
 'hambatan_bahasa' => $request-> hambatan_bahasa,
 'hambatan_budaya' => $request-> hambatan_budaya,
 'hambatan_mobilitas' => $request-> hambatan_mobilitas,
-'date_created' => date('Y-m-d'),
-'update_created' => date('Y-m-d'),
+'date_created' => time(),
+'update_created' => time(),
 ];
 DB::table('kajian_awal')->insert($data);
 

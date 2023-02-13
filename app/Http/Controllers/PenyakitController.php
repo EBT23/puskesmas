@@ -18,7 +18,6 @@ $data = [
      'update_created' => date('Y-m-d'),
 ];
 DB::table('penyakit')->insert($data);
-
 return redirect()->route('penyakit');
-    }
+}
 }
