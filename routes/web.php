@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\PenyakitController;
+use App\Http\Controllers\ObatController;
 use App\Http\Controllers\UserFormController;
 
 /*
@@ -61,12 +62,25 @@ Route::middleware(['auth'])->group(function () {
     Route::post('penyakit/{id}', [PenyakitController::class, 'editPenyakit'])->name('editPenyakit');
     Route::delete('hapuspenyakit/{id}', [PenyakitController::class, 'hapusPenyakit'])->name('hapusPenyakit');
 
+    // kelola obat
+    Route::get('obat', [ObatController::class, 'obat'])->name('obat');
+    Route::post('obat', [ObatController::class, 'obatPost'])->name('obat.post');
+    Route::post('obat/{id}', [ObatController::class, 'editObat'])->name('editObat');
+    Route::delete('hapusobat/{id}', [ObatController::class, 'hapusObat'])->name('hapusObat');
+
+
+
+
+
+
+
     // Route::get('penyakit', [PenyakitController::class, 'editPost'])->name('edit.post');
 
 
 
     ##Logout Dani
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
 });
 
 

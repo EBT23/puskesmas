@@ -36,7 +36,16 @@
                             </div>
                             <div class="form-group">
                                 <label for="hari">hari</label>
-                                <input type="date" class="form-control" id="hari" name="hari" placeholder="Hari">
+                                <select name="hari" id="hari" class="form-control">
+                                    <option value="Senin">--pilih--</option>
+                                    <option value="Senin">Senin</option>
+                                    <option value="Selasa">Selasa</option>
+                                    <option value="Rabu">Rabu</option>
+                                    <option value="Kamis">Kamis</option>
+                                    <option value="jumat">jumat</option>
+                                    <option value="Sabtu">Sabtu</option>
+                                    <option value="Minggu">Minggu</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -128,7 +137,16 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="hari">hari</label>
-                                        <input type="date" class="form-control" id="hari" name="hari" value="{{ $jd->hari }}">
+                                        <select name="hari" id="hari" class="form-control">
+                                            <option value="{{ $jd->hari }}" selected>{{ $jd->hari }}</option>
+                                            <option value="Senin">Senin</option>
+                                            <option value="Selasa">Selasa</option>
+                                            <option value="Rabu">Rabu</option>
+                                            <option value="Kamis">Kamis</option>
+                                            <option value="jumat">jumat</option>
+                                            <option value="Sabtu">Sabtu</option>
+                                            <option value="Minggu">Minggu</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
