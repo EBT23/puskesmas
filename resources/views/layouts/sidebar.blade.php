@@ -47,6 +47,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('role') }}" class="nav-link">
+                        <i class="far fa-sun"></i>
+                        <p>
+                            Role
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item menu-open">
                     <a href="{{ route('jadwal') }}" class="nav-link">
                         <i class="nav-icon fas fa-table"></i>

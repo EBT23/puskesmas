@@ -57,6 +57,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('penyakit', [PenyakitController::class, 'penyakit'])->name('penyakit');
     Route::post('penyakit', [PenyakitController::class, 'penyakitPost'])->name('penyakit.post');
 
+    //role
+    Route::get('role', [DashboardController::class, 'role'])->name('role');
 
 
     ##Logout Dani
