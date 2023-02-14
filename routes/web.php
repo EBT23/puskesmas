@@ -52,10 +52,16 @@ Route::middleware(['auth'])->group(function () {
     //kelola jadwal dokter
     Route::get('jadwal', [JadwalController::class, 'jadwal'])->name('jadwal');
     Route::post('jadwal', [JadwalController::class, 'jadwalPost'])->name('jadwal.post');
+    Route::post('jadwal/{id}', [JadwalController::class, 'editPost'])->name('editJadwal');
+    Route::delete('hapusjadwal/{id}', [JadwalController::class, 'hapusJadwal'])->name('hapusJadwal');
 
     //kelola penyakit
     Route::get('penyakit', [PenyakitController::class, 'penyakit'])->name('penyakit');
     Route::post('penyakit', [PenyakitController::class, 'penyakitPost'])->name('penyakit.post');
+    Route::post('penyakit/{id}', [PenyakitController::class, 'editPenyakit'])->name('editPenyakit');
+    Route::delete('hapuspenyakit/{id}', [PenyakitController::class, 'hapusPenyakit'])->name('hapusPenyakit');
+
+    // Route::get('penyakit', [PenyakitController::class, 'editPost'])->name('edit.post');
 
 
 

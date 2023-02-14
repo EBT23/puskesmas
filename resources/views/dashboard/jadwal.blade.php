@@ -22,12 +22,17 @@
             <div class="card-body">
                 <form method="POST" action="{{ route('jadwal.post') }}">
                     @csrf
-
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="dokter_id">Nama Dokter</label>
-                                <input type="text" class="form-control" id="dokter_id" name="dokter_id" placeholder="Nama Dokter">
+                                <select class="form-control" name="dokter_id" id="dokter_id">
+                                    <option value="">-pilih-</option>
+                                    @foreach ($dataDokter as $dd )
+                                    <option value="{{ $dd->id }}">{{ $dd->nama_dokter}}</option>
+                                    @endforeach
+                                </select>
+                                {{-- <input type="text" class="form-control" id="dokter_id" name="dokter_id" placeholder="Nama Dokter"> --}}
                             </div>
                             <div class="form-group">
                                 <label for="hari">hari</label>
@@ -59,23 +64,24 @@
                                 <th>Hari</th>
                                 <th>Dari Jam</th>
                                 <th>Sampai Jam</th>
-                                <th width="10%">Aksi</th>
+                                <th width="15%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($jadwalDokter as $dj )
+                            @foreach ($jadwalDokter as $i => $jd )
                             <tr>
-                                <td>1</td>
-                                <td>{{$dj->dokter_id}}</td>
-                                <td>{{$dj->hari}}</td>
-                                <td>{{$dj->dari_jam}}</td>
-                                <td>{{$dj->sampai_jam}}</td>
-                                <td>
-
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">Edit</button>
-
-
-                                    <button class="btn btn-danger" type="reset">Hapus</button>
+                                <td>{{ $i+1 }}</td>
+                                <td>{{$jd->nama_dokter}}</td>
+                                <td>{{$jd->hari}}</td>
+                                <td>{{$jd->dari_jam}}</td>
+                                <td>{{$jd->sampai_jam}}</td>
+                                <td class="d-flex">
+                                    <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#modal-lg{{ $jd->id }}">Edit</button>
+                                    <form action="hapusjadwal/{{$jd->id }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-danger" type="submit">Hapus</button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
@@ -87,7 +93,7 @@
                                 <th>Hari</th>
                                 <th>Dari Jam</th>
                                 <th>Sampai Jam</th>
-                                <th width="10%">Aksi</th>
+                                <th width="15%">Aksi</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -95,24 +101,30 @@
             </div>
             <!-- /.card-body -->
         </div><!-- /.row -->
-        <div class="modal fade" id="modal-lg">
+        @foreach ($jadwalDokter as $jd )
+        <div class="modal fade" id="modal-lg{{ $jd->id }}">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Large Modal</h4>
+                        <h4 class="modal-title">Edit Data</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="{{ route('jadwal.post') }}">
+                        <form method="POST" action="{{ route('editJadwal', ['id'=>$jd->id]) }}">
                             @csrf
                             <div class="row">
-                                @foreach ($jadwalDokter as $jd )
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="dokter_id">Nama Dokter</label>
-                                        <input type="text" class="form-control" id="dokter_id" name="dokter_id" value="{{ $jd->dokter_id }}">
+                                        <select class="form-control" name="dokter_id" id="dokter_id">
+                                            @foreach ($dataDokter as $dd )
+                                            <option @if($jd->dokter_id == $dd->id) selected @endif value="{{ $dd->id }}">{{ $dd->nama_dokter}}</option>
+
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="hari">hari</label>
@@ -130,21 +142,20 @@
                                         <input type="time" class="form-control" id="sampai_jam" name="sampai_jam" value="{{ $jd->sampai_jam }}">
                                     </div>
                                 </div>
-                                @endforeach
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-
                     </div>
                     <div class="modal-footer justify-content-right">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
+                    </form>
                 </div>
 
             </div>
 
         </div>
+        @endforeach
+
 
 
     </div><!-- /.container-fluid -->
