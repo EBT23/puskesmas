@@ -68,7 +68,7 @@
                     <table id="example1" class="table table-bordered table-striped" style="text-justify: center">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th width="10%">No</th>
                                 <th>Nama</th>
                                 <th>Hari</th>
                                 <th>Dari Jam</th>
@@ -97,7 +97,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>No</th>
+                                <th width="10%">No</th>
                                 <th>Nama</th>
                                 <th>Hari</th>
                                 <th>Dari Jam</th>
