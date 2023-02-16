@@ -3,25 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pendaftaran;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Symfony\Contracts\Service\Attribute\Required;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PendaftaranController extends Controller
 {
+
     public function index()
     {
 
         $data['title'] = 'Pendaftaran';
         return view('pendaftaran.index', $data);
     }
+
     public function pendaftaran_action(Request $request)
     {
 
+        $user = Auth::user()->id;
+
         $request->validate([]);
 
-        $input = Pendaftaran::create([
-            'id_user' => $request->session()->get('id'),
+        Pendaftaran::create([
+            'id_user' => $user,
             'nama' => $request->nama,
             'nik' => $request->nik,
             'tgl_lahir' => $request->tgl_lahir,
@@ -36,39 +43,64 @@ class PendaftaranController extends Controller
             'pendidikan_terakhir' => $request->pendidikan_terakhir,
             'jaminan_asuransi' => $request->jaminan_asuransi,
             'no_jaminan' => $request->no_jaminan,
-            'no_rm' => rand(100000, 999999),
-            'created_at' => time(),
-            'updated_at' => null
+            'no_rm' =>  'RM' . rand(100000, 99999),
+            'created_at' => now()
         ]);
 
-        dd($input);
+        $data['title'] = 'Kartu Pasien';
+        return view('pendaftaran/cetak_kartu', $data)->with('success', 'Task Created Successfully!');
     }
 
-    public function kajian_awal(){
+    public function kartuPasien()
+    {
+        $user = auth()->id();
+        $getKartu = Pendaftaran::where('id_user', $user)->get();
+
+        return view('pendaftaran/kartuPasien', [
+            'title' => 'Kartu Pasien',
+            'data' => (object) [
+                'pasien' => $getKartu
+
+            ],
+        ]);
+    }
+
+    public function cetakPDF()
+    {
+        $user = auth()->id();
+        $getPDF = Pendaftaran::where('id_user', $user)->get();
+
+        $pdf = Pdf::loadView('pendaftaran/cetakPDF', ['cetakPDF' => $getPDF]);
+        $pdf->setPaper('A4', 'landscape');
+        return $pdf->stream('kartu_pasien.pdf');
+    }
+
+    public function kajian_awal()
+    {
 
         $data['title'] = 'kajian awal';
         return view('pendaftaran.kajian_awal', $data);
     }
 
-function kajianawalPost(Request $request){
+    function kajianawalPost(Request $request)
+    {
 
-$data = [
-'status' => $request->status,
-'riwayat_penyakit_terdahulu' => $request->riwayat_penyakit_terdahulu,
-'riwayat_penyakit_keluarga' => $request->riwayat_penyakit_keluarga,
-'pengkajian_psikologis' => $request->pengkajian_psikologis,
-'riwayat_gangguan_jiwa' => $request->riwayat_gangguan_jiwa,
-'keluarga_gangguan_jiwa' => $request->keluarga_gangguan_jiwa,
-'tinggal_dengan' => $request-> tinggal_dengan,
-'hambatan_bahasa' => $request-> hambatan_bahasa,
-'hambatan_budaya' => $request-> hambatan_budaya,
-'hambatan_mobilitas' => $request-> hambatan_mobilitas,
-'date_created' => time(),
-'update_created' => time(),
-];
-DB::table('kajian_awal')->insert($data);
+        $data = [
+            'status' => $request->status,
+            'riwayat_penyakit_terdahulu' => $request->riwayat_penyakit_terdahulu,
+            'riwayat_penyakit_keluarga' => $request->riwayat_penyakit_keluarga,
+            'pengkajian_psikologis' => $request->pengkajian_psikologis,
+            'riwayat_gangguan_jiwa' => $request->riwayat_gangguan_jiwa,
+            'keluarga_gangguan_jiwa' => $request->keluarga_gangguan_jiwa,
+            'tinggal_dengan' => $request->tinggal_dengan,
+            'hambatan_bahasa' => $request->hambatan_bahasa,
+            'hambatan_budaya' => $request->hambatan_budaya,
+            'hambatan_mobilitas' => $request->hambatan_mobilitas,
+            'date_created' => time(),
+            'update_created' => time(),
+        ];
+        DB::table('kajian_awal')->insert($data);
 
-return redirect()->route('kajian_awal');
-
-}
+        return redirect()->route('kajian_awal');
+    }
 }

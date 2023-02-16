@@ -44,7 +44,7 @@ Route::post('reset-password', [AuthController::class, 'submitResetPasswordForm']
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    
+
     ##Agus
     Route::get('/pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran');
     Route::post('pendaftaran', [PendaftaranController::class, 'pendaftaran_action'])->name('pendaftaran.action');
@@ -70,34 +70,37 @@ Route::middleware(['auth'])->group(function () {
     Route::post('obat', [ObatController::class, 'obatPost'])->name('obat.post');
     Route::post('obat/{id}', [ObatController::class, 'editObat'])->name('editObat');
     Route::delete('hapusobat/{id}', [ObatController::class, 'hapusObat'])->name('hapusObat');
-    
+
     //admin profil
     Route::get('profil', [AdminprofilController::class, 'profil'])->name('profilAdmin');
     Route::post('profil/{id}', [AdminprofilController::class, 'editProfil'])->name('editProfilAdmin');
-    
+
     //input pemeriksaan oleh admin
     Route::get('pemeriksaan', [PemeriksaanController::class, 'pemeriksaan'])->name('pemeriksaan');
     Route::post('pemeriksaan', [PemeriksaanController::class, 'pemeriksaanPost'])->name('pemeriksaan.Post');
 
     //role
     Route::get('role', [DashboardController::class, 'role'])->name('role');
+    Route::post('role', [DashboardController::class, 'tambah_role'])->name('role.post');
+    Route::post('role/{id}', [DashboardController::class, 'edit_role'])->name('role.edit');
+    Route::delete('hapus_role/{id}', [DashboardController::class, 'hapus_role'])->name('role.hapus');
 
+    //poli
+    Route::get('poli', [DashboardController::class, 'poli'])->name('poli');
+    Route::post('poli', [DashboardController::class, 'tambah_poli'])->name('poli.post');
+    Route::post('poli/{id}', [DashboardController::class, 'edit_poli'])->name('poli.edit');
+    Route::delete('hapus_poli/{id}', [DashboardController::class, 'hapus_poli'])->name('poli.hapus');
+
+    //dokter
+    Route::get('dokter', [DashboardController::class, 'dokter'])->name('dokter');
+    Route::post('dokter', [DashboardController::class, 'tambah_dokter'])->name('dokter.post');
+    Route::post('dokter/{id}', [DashboardController::class, 'edit_dokter'])->name('dokter.edit');
+    Route::delete('hapus_dokter/{id}', [DashboardController::class, 'hapus_dokter'])->name('dokter.hapus');
 
     ##Logout Dani
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-
 });
 
-
-Route::controller(UserFormController::class)->group(function () {
-    Route::get('/users', 'index')->name('users.index');
-    Route::post('users/form/create', 'createProcess')->name('users/form.create');
-    Route::post('users/form/update', 'updateProcess')->name('users/form.update');
-    Route::post('users/form/delete', 'deleteProcess')->name('usersform.delete');
-});
-
-# Users Form
-// Route::get('users/', [UserFormController::class, 'index']);
-// Route::post('users/create', [UserFormController::class, 'create'])->name('users.create');
-// Route::post('articles', [UserFormController::class, 'store']);
-// Route::get('articles/{id}', [UserFormController::class, 'show']);
+## Agus Kartu pasien
+Route::get('/kartuPasien', [PendaftaranController::class, 'kartuPasien'])->name('kartu.pasien');
+Route::get('/cetakKartu', [PendaftaranController::class, 'cetakPDF'])->name('cetak.kartu');
