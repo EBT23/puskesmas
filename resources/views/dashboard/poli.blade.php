@@ -21,15 +21,20 @@
             </div>
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Data Role</h3>
+                    <h3 class="card-title">Data Poli</h3>
                 </div>
                 <div class="card-header">
-                    <form action="{{ route('role.post') }}" method="POST">
+                    <form action="{{ route('poli.post') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="nama_role">Nama Role</label>
-                            <input type="text" class="form-control" id="nama_role" name="nama_role"
-                                aria-describedby="nama_role" required>
+                            <label for="kode_poli">Kode Poli</label>
+                            <input type="text" class="form-control" id="kode_poli" name="kode_poli"
+                                aria-describedby="kode_poli" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nama_poli">Nama Poli</label>
+                            <input type="text" class="form-control" id="nama_poli" name="nama_poli"
+                                aria-describedby="nama_poli" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
@@ -40,41 +45,49 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nama Role</th>
+                                <th scope="col">Kode Poli</th>
+                                <th scope="col">Nama Poli</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $no = 1; ?>
-                            @foreach ($role as $r)
+                            @foreach ($poli as $p)
                                 <tr>
                                     <th scope="row">{{ $no }}</th>
-                                    <td>{{ $r->nama_role }}</td>
+                                    <td>{{ $p->poli_code }}</td>
+                                    <td>{{ $p->nama_poli }}</td>
                                     <td>
                                         <a class="btn btn-primary" data-toggle="modal"
-                                            data-target="#exampleModal1{{ $r->id }}">Edit</a>
+                                            data-target="#exampleModal1{{ $p->id }}">Edit</a>
 
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal1{{ $r->id }}" tabindex="-1"
+                                        <div class="modal fade" id="exampleModal1{{ $p->id }}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Edit role</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Edit poli</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="{{ route('role.edit', ['id' => $r->id]) }}"
+                                                        <form action="{{ route('poli.edit', ['id' => $p->id]) }}"
                                                             method="POST">
                                                             @csrf
                                                             <div class="form-group">
-                                                                <label for="nama_role">Nama Role</label>
-                                                                <input type="text" class="form-control" id="nama_role"
-                                                                    value="{{ $r->nama_role }}" name="nama_role"
-                                                                    aria-describedby="nama_role" required>
+                                                                <label for="kode_poli">Kode Poli</label>
+                                                                <input type="text" class="form-control" id="kode_poli"
+                                                                    value="{{ $p->poli_code }}" name="kode_poli"
+                                                                    aria-describedby="kode_poli" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="nama_poli">Nama Poli</label>
+                                                                <input type="text" class="form-control" id="nama_poli"
+                                                                    value="{{ $p->nama_poli }}" name="nama_poli"
+                                                                    aria-describedby="nama_poli" required>
                                                             </div>
                                                     </div>
                                                     <div class="modal-footer">
@@ -87,7 +100,7 @@
                                             </div>
                                         </div>
 
-                                        <form action="hapus_role/{{ $r->id }}" method="POST">
+                                        <form action="hapus_poli/{{ $p->id }}" method="POST">
                                             @method('DELETE')
                                             @csrf
                                             <button onclick="return confirm('Anda yakin akan menghapus ini? ')"

@@ -69,20 +69,28 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('hapusobat/{id}', [ObatController::class, 'hapusObat'])->name('hapusObat');
 
 
-
-
-
-
-
     // Route::get('penyakit', [PenyakitController::class, 'editPost'])->name('edit.post');
 
     //role
     Route::get('role', [DashboardController::class, 'role'])->name('role');
+    Route::post('role', [DashboardController::class, 'tambah_role'])->name('role.post');
+    Route::post('role/{id}', [DashboardController::class, 'edit_role'])->name('role.edit');
+    Route::delete('hapus_role/{id}', [DashboardController::class, 'hapus_role'])->name('role.hapus');
 
+    //poli
+    Route::get('poli', [DashboardController::class, 'poli'])->name('poli');
+    Route::post('poli', [DashboardController::class, 'tambah_poli'])->name('poli.post');
+    Route::post('poli/{id}', [DashboardController::class, 'edit_poli'])->name('poli.edit');
+    Route::delete('hapus_poli/{id}', [DashboardController::class, 'hapus_poli'])->name('poli.hapus');
+
+    //dokter
+    Route::get('dokter', [DashboardController::class, 'dokter'])->name('dokter');
+    Route::post('dokter', [DashboardController::class, 'tambah_dokter'])->name('dokter.post');
+    Route::post('dokter/{id}', [DashboardController::class, 'edit_dokter'])->name('dokter.edit');
+    Route::delete('hapus_dokter/{id}', [DashboardController::class, 'hapus_dokter'])->name('dokter.hapus');
 
     ##Logout Dani
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-
 });
 
 
