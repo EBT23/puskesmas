@@ -102,14 +102,28 @@
                         </a>
                     </li>
                 @else
-                    <li class="nav-item menu-open">
+                    <li class="nav-item">
                         <a href="pendaftaran" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Pendaftaran
-                                {{-- <i class="right fas fa-angle-left"></i> --}}
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item menu-open">
+                              <a href="{{ route('pendaftaran') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Form Registrasi</p>
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a href="/kartuPasien" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Kartu Pasien</p>
+                              </a>
+                            </li>
+                          </ul>
                     </li>
                     <li class="nav-item menu-open">
                         <a href="{{ route('kajian_awal') }}" class="nav-link">
