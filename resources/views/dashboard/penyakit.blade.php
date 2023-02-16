@@ -38,7 +38,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <td>No</td>
+                            <td width="10%">No</td>
                             <td>Nama Penyakit</td>
                             <td width="15%">Aksi</td>
                         </tr>
@@ -65,7 +65,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td>No</td>
+                            <td width="10%">No</td>
                             <td>Nama Penyakit</td>
                             <td width="15%">Aksi</td>
                         </tr>

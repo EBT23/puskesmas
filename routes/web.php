@@ -11,6 +11,9 @@ use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\ObatController;
+use App\Http\Controllers\AdminprofilController;
+use App\Http\Controllers\UserprofilController;
+use App\Http\Controllers\PemeriksaanController;
 use App\Http\Controllers\UserFormController;
 
 /*
@@ -68,8 +71,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('obat/{id}', [ObatController::class, 'editObat'])->name('editObat');
     Route::delete('hapusobat/{id}', [ObatController::class, 'hapusObat'])->name('hapusObat');
 
+    //admin profil
+    Route::get('profil', [AdminprofilController::class, 'profil'])->name('profilAdmin');
+    Route::post('profil/{id}', [AdminprofilController::class, 'editProfil'])->name('editProfilAdmin');
 
-    // Route::get('penyakit', [PenyakitController::class, 'editPost'])->name('edit.post');
+    //input pemeriksaan oleh admin
+    Route::get('pemeriksaan', [PemeriksaanController::class, 'pemeriksaan'])->name('pemeriksaan');
+    Route::post('pemeriksaan', [PemeriksaanController::class, 'pemeriksaanPost'])->name('pemeriksaan.Post');
 
     //role
     Route::get('role', [DashboardController::class, 'role'])->name('role');

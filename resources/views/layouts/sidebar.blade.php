@@ -16,7 +16,7 @@
                     alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{ Auth::user()->full_name }}</a>
+                <a href="" class="d-block">{{ Auth::user()->full_name }}</a>
             </div>
         </div>
 
