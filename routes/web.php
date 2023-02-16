@@ -101,16 +101,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
-
-Route::controller(UserFormController::class)->group(function () {
-    Route::get('/users', 'index')->name('users.index');
-    Route::post('users/form/create', 'createProcess')->name('users/form.create');
-    Route::post('users/form/update', 'updateProcess')->name('users/form.update');
-    Route::post('users/form/delete', 'deleteProcess')->name('usersform.delete');
-});
-
-# Users Form
-// Route::get('users/', [UserFormController::class, 'index']);
-// Route::post('users/create', [UserFormController::class, 'create'])->name('users.create');
-// Route::post('articles', [UserFormController::class, 'store']);
-// Route::get('articles/{id}', [UserFormController::class, 'show']);
+## Agus Kartu pasien
+Route::get('/kartuPasien', [PendaftaranController::class, 'kartuPasien'])->name('kartu.pasien');
+Route::get('/cetakKartu', [PendaftaranController::class, 'cetakPDF'])->name('cetak.kartu');
