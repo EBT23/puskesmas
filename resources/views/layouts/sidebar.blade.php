@@ -123,6 +123,15 @@
                     </ul>
                 </li>
                 <li class="nav-item menu-open">
+                    <a href="{{ route('noAntrian') }}" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            No Antrian
+                            {{-- <i class="right fas fa-angle-left"></i> --}}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item menu-open">
                     <a href="{{ route('kajian_awal') }}" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>

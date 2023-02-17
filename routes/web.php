@@ -12,6 +12,7 @@ use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\AdminprofilController;
+use App\Http\Controllers\NoAntrianController;
 use App\Http\Controllers\UserprofilController;
 use App\Http\Controllers\PemeriksaanController;
 use App\Http\Controllers\UserFormController;
@@ -96,6 +97,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('dokter', [DashboardController::class, 'tambah_dokter'])->name('dokter.post');
     Route::post('dokter/{id}', [DashboardController::class, 'edit_dokter'])->name('dokter.edit');
     Route::delete('hapus_dokter/{id}', [DashboardController::class, 'hapus_dokter'])->name('dokter.hapus');
+
+    #Dani
+    Route::get('noAntrian', [NoAntrianController::class, 'view'])->name('noAntrian');
+    Route::post('noAntrian/add', [NoAntrianController::class, 'add'])->name('noAntrian.add');
 
     ##Logout Dani
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
