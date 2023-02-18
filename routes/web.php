@@ -100,7 +100,9 @@ Route::middleware(['auth'])->group(function () {
 
     #Dani
     Route::get('noAntrian', [NoAntrianController::class, 'view'])->name('noAntrian');
+    
     Route::post('noAntrian/add', [NoAntrianController::class, 'add'])->name('noAntrian.add');
+    Route::get('cetakAntrian/{id}', [NoAntrianController::class, 'cetakAntrian'])->name('noAntrian.cetakAntrian');
 
     ##Logout Dani
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');

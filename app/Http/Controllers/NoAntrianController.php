@@ -14,7 +14,16 @@ class NoAntrianController extends Controller
     {
         $data['title'] = 'Poli';
         $poli = DB::select('SELECT * from poli');
-        return view('antrian.view', ['poli' => $poli], $data);
+        $antrian = DB::select('SELECT u.*, a.id as id_antrian, a.antrian, a.id_poli, a.id_user, a.created_at, p.nama_poli from antrian a left join users u on a.id_user=u.id left join poli p on p.id=a.id_poli where a.id_user = ' . Auth::user()->id . '');
+
+        return view('antrian.view', ['poli' => $poli, 'antrian' => $antrian], $data);
+    }
+    public function cetakAntrian($id)
+    {
+        $data['title'] = 'Cetak Antrian';
+        $antrian = DB::select('SELECT u.*, a.id as id_antrian, a.antrian, a.id_poli, a.id_user, a.created_at, p.nama_poli from antrian a left join users u on a.id_user=u.id left join poli p on p.id=a.id_poli where a.id = ' . $id . '');
+
+        return view('antrian.cetakAntrian', ['antrian' => $antrian], $data);
     }
     public function add(Request $request)
     {

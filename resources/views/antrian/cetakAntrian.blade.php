@@ -2,17 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        @if (isset($title))
-        {{ __($title) }}
-        @else
-        {{ config('app.name', 'Administrator - Puskesmas') }}
-        @endif
-    </title>
-
-    <!-- Google Font: Source Sans Pro -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cetak Antrian</title>
+    <link rel="stylesheet" href="style.css" media="all" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
@@ -39,39 +33,44 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('asset/plugins/toastr/toastr.min.css') }}">
-
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
+<body onload="window.print()">
+    <section class="content">
+        <!-- Default box -->
+        <div class="card card-solid">
+            <div class="card-body pb-0">
+                <div class="row">
+                    @foreach ($antrian as $ant)
+                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                            <div class="card bg-light d-flex flex-fill">
+                                <div class="card-header text-muted border-bottom-0">
+                                    <h1>Poli {{ $ant->nama_poli }}</h1>
+                                </div>
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <h4>Nama:</h4>
+                                            <h1 class="lead"><b>{{ $ant->full_name }}</b></h1>
+                                            <p class="text-muted text-sm"><b>Waktu: </b> {{ $ant->created_at }} </p>
 
-        <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <h1>Nomor Antrian</h1>
+                                            <h2 style="font-size: 500%;">{{ $ant->antrian }}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
-
-        @include('layouts.navbar')
-
-        @include('layouts.sidebar')
-
-        <div class="content-wrapper">
-            @yield('content')
-        </div>
-
-        {{-- @include('layouts.control-sidebar') --}}
-
-        @include('layouts.footer')
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
-    </div>
-    <!-- ./wrapper -->
-
-    <!-- jQuery -->
-    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+    </section>
+</body>
+<script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -109,30 +108,5 @@
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-
-
-
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true
-                , "lengthChange": false
-                , "autoWidth": false
-                , "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true
-                , "lengthChange": false
-                , "searching": false
-                , "ordering": true
-                , "info": true
-                , "autoWidth": false
-                , "responsive": true
-            , });
-        });
-
-    </script>
-
-</body>
 
 </html>
