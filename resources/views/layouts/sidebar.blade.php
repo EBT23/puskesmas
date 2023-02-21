@@ -100,6 +100,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item ">
+                    <a href="{{ route('pemeriksaan') }}" class="nav-link">
+                        <i class="nav-icon fas fa-newspaper"></i>
+                        <p>
+                            Pemeriksaan
+                            {{-- <i class="right fas fa-angle-left"></i> --}}
+                        </p>
+                    </a>
+                </li>
                 @else
                 <li class="nav-item">
                     <a href="pendaftaran" class="nav-link">

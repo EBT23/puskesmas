@@ -14,8 +14,7 @@ class NoAntrianController extends Controller
     {
         $data['title'] = 'Poli';
         $poli = DB::select('SELECT * from poli');
-        $antrian = DB::select('SELECT u.*, a.id as id_antrian, a.antrian, a.id_poli, a.id_user, a.created_at, p.nama_poli from antrian a left join users u on a.id_user=u.id left join poli p on p.id=a.id_poli where a.id_user = ' . Auth::user()->id . '');
-
+        $antrian = DB::select('SELECT u.*, a.id as id_antrian, a.antrian, a.id_poli, a.id_user, a.created_at, p.nama_poli from antrian a left join users u on a.id_user=u.id left join poli p on p.id=a.id_poli where a.id_user = ' . Auth::user()->id . ' and a.created_at like ("%' . date('Y-m-d') . '%")');
         return view('antrian.view', ['poli' => $poli, 'antrian' => $antrian], $data);
     }
     public function cetakAntrian($id)
@@ -27,8 +26,8 @@ class NoAntrianController extends Controller
     }
     public function add(Request $request)
     {
-        $antrian = DB::table('antrian')->where('id_user', Auth::user()->id)->where('id_poli', $request->id_poli)->first();
-        $cek = DB::table('antrian')->where('id_poli', $request->id_poli)->latest('antrian')->first();
+        $antrian = DB::table('antrian')->where('id_user', Auth::user()->id)->where('id_poli', $request->id_poli)->where('created_at', date('Y-m-d'))->first();
+        $cek = DB::table('antrian')->where('id_poli', $request->id_poli)->where('created_at', date('Y-m-d'))->latest('antrian')->first();
         if ($antrian == true) {
             Alert::error('Gagal', 'Anda sudah Mendaftar di poli ini');
             return back();
