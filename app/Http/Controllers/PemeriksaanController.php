@@ -28,6 +28,33 @@ class PemeriksaanController extends Controller
                'dataAntrian' => $dataAntrian,
           ], $data);
      }
+     function addKajianAwal($id_user)
+     {
+          $query = DB::table('kajian_awal')->where('id_user', $id_user)->get();
+          $data = "<option value=''> - Pilih Kajian - </option>";
+          foreach ($query as $value) {
+               $data .= "<option value='" . $value->id . "'>" . $value->id . "</option>";
+          }
+          return response()->json(['data' => $data]);
+     }
+     function addTujuanPemeriksaan($id_user)
+     {
+          $query = DB::table('tujuan_pemeriksaan')->where('user_id', $id_user)->get();
+          $data = "<option value=''> - Pilih Tujuan Pemeriksaan - </option>";
+          foreach ($query as $value) {
+               $data .= "<option value='" . $value->id . "'>" . $value->id . "</option>";
+          }
+          return response()->json(['data' => $data]);
+     }
+     function addAntrian($id_user)
+     {
+          $query = DB::table('antrian')->where('id_user', $id_user)->get();
+          $data = "<option value=''> - Pilih Antrian - </option>";
+          foreach ($query as $value) {
+               $data .= "<option value='" . $value->id . "'>" . $value->antrian . "</option>";
+          }
+          return response()->json(['data' => $data]);
+     }
 
      function pemeriksaanPost(Request $request)
      {

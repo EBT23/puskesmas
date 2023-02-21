@@ -86,6 +86,7 @@ class PendaftaranController extends Controller
     {
 
         $data = [
+            'id_user' => Auth::user()->id,
             'status' => $request->status,
             'riwayat_penyakit_terdahulu' => $request->riwayat_penyakit_terdahulu,
             'riwayat_penyakit_keluarga' => $request->riwayat_penyakit_keluarga,
@@ -96,9 +97,10 @@ class PendaftaranController extends Controller
             'hambatan_bahasa' => $request->hambatan_bahasa,
             'hambatan_budaya' => $request->hambatan_budaya,
             'hambatan_mobilitas' => $request->hambatan_mobilitas,
-            'date_created' => time(),
-            'update_created' => time(),
+            'date_created' => now(),
+            'update_created' => now(),
         ];
+        // dd($data);
         DB::table('kajian_awal')->insert($data);
 
         return redirect()->route('kajian_awal');
