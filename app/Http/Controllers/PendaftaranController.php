@@ -63,7 +63,7 @@ class PendaftaranController extends Controller
         ]);
 
         $data['title'] = 'Kartu Pasien';
-        return view('pendaftaran/cetak_kartu', $data)->with('success', 'Task Created Successfully!');
+        return view('pendaftaran/kartuPasien', $data)->with('success', 'Task Created Successfully!');
     }
 
     public function kartuPasien()

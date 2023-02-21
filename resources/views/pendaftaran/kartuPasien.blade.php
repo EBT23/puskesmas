@@ -1,6 +1,7 @@
 @extends('layouts.base', ['title' => "$title - Pasien"])
 
 @section('content')
+@include('sweetalert::alert')
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -58,7 +59,9 @@
                     <tr>
                         <td colspan="3" align=" center"><b>KARTU INI HARUS DIBAWA TIAP BEROBAT</b></td>
                     </tr>
-                    <a class="btn btn-outline-info" href="{{ url('cetakKartu') }}" target="_blank" role="button">Cetak Kartu</a>
+                    
+                </table>
+                <a class="btn btn-outline-info" href="{{ url('cetakKartu') }}" target="_blank" role="button">Cetak Kartu</a>
                     @empty
                     
                         <p class="px-4 py-3 bg-info text-white" align="center" >
@@ -66,8 +69,6 @@
                         </p>
                     
                     @endforelse
-                </table>
-               
             </div>
         </div>
     </div><!-- /.row -->

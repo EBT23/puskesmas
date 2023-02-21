@@ -7,10 +7,10 @@
         <div class="register-box ">
             <div class="card card-outline card-primary">
               <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+                <a href="#" class="h1"><b>PUSKESMAS</b> <br> SEWON</a>
               </div>
               <div class="card-body col-lg">
-                <p class="login-box-msg">Register a new membership</p>
+                <p class="login-box-msg">Daftar Akun</p>
           
                 <form action="{{ route('register') }}" method="post">
                   @csrf
@@ -49,7 +49,7 @@
                     @enderror
                   </div>
                   <div class="input-group mb-3">
-                    <input type="password"  class="form-control" name="password" placeholder="Retype password">
+                    <input type="password"  class="form-control" name="password" placeholder="Ulangi password">
                     <div class="input-group-append">
                       <div class="input-group-text">
                         <span class="fas fa-lock"></span>
@@ -66,13 +66,14 @@
                       </div>
                     </div> --}}
                     <!-- /.col -->
-                    <div class="col-4">
-                      <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    <div class="col-lg">
+                      <button type="submit" class="btn btn-primary btn-block">Daftar</button>
                     </div>
                     <!-- /.col -->
                   </div>
+                  <br>
                 </form>
-                <a href="/" class="text-center">I already have a membership</a>
+                <p>Sudah punya akun? <a href="/" class="text-center"> Silahkan login.</a></p>
               </div>
               <!-- /.form-box -->
             </div><!-- /.card -->

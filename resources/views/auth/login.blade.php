@@ -10,10 +10,10 @@
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
-            <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+            <a href="../../index2.html" class="h1"><b>PUSKESMAS</b><br> SEWON</a>
         </div>
         <div class="card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="login-box-msg">Login Akun</p>
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf
@@ -40,16 +40,16 @@
 
                 </div>
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-7">
                         <div class="icheck-primary">
                             <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                             <label for="remember">
-                                Remember Me
+                                Ingat Saya
                             </label>
                         </div>
                     </div>
                     <!-- /.col -->
-                    <div class="col-4">
+                    <div class="col-5">
                         <button type="submit" class="btn btn-primary btn-block">{{ __('Login') }}</button>
                     </div>
                     <!-- /.col -->
@@ -67,15 +67,15 @@
             <!-- /.social-auth-links -->
 
             <p class="mb-1">
-                <a href="{{ route('password') }}">I forgot my password</a>
+                <a href="{{ route('password') }}">Lupa password</a>
             </p>
             @if (Route::has('password.request'))
                 <p class="mb-0">
-                    <a href="{{ route('password.request') }}" class="text-center">Register a new membership</a>
+                    Belum punya akun? <a href="{{ route('password.request') }}" class="text-center"> Silahkan daftar</a>
                 </p>
             @endif
             <p class="mb-0">
-                <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
+                Belum punya akun? <a href="{{ route('register') }}" class="text-center"> Silahkan daftar</a>
             </p>
         </div>
         <!-- /.card-body -->
