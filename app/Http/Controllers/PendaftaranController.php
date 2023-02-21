@@ -25,7 +25,22 @@ class PendaftaranController extends Controller
 
         $user = Auth::user()->id;
 
-        $request->validate([]);
+        $request->validate([
+            'nama' => 'required',
+            'nik' => 'required',
+            'tgl_lahir' => 'required',
+            'tempat_lahir' => 'required',
+            'alamat' => 'required',
+            'nama_kk' => 'required',
+            'jk' => 'required',
+            'status' => 'required',
+            'agama' => 'required',
+            'no_telp' => 'required',
+            'pekerjaan' => 'required',
+            'pendidikan_terakhir' => 'required',
+            'jaminan_asuransi' => 'required',
+            'no_jaminan' => 'required',
+        ]);
 
         Pendaftaran::create([
             'id_user' => $user,
