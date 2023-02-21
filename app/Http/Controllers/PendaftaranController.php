@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pendaftaran;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Symfony\Contracts\Service\Attribute\Required;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PendaftaranController extends Controller
 {
@@ -84,7 +85,7 @@ class PendaftaranController extends Controller
         $user = auth()->id();
         $getPDF = Pendaftaran::where('id_user', $user)->get();
 
-        $pdf = PDF::loadView('pendaftaran/cetakPDF', ['cetakPDF' => $getPDF]);
+        $pdf = Pdf::loadView('pendaftaran/cetakPDF', ['cetakPDF' => $getPDF]);
         $pdf->setPaper('A4', 'landscape');
         return $pdf->stream('kartu_pasien.pdf');
     }

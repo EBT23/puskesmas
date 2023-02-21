@@ -6,19 +6,24 @@ use Illuminate\Http\Request;
 
 class AdminprofilController extends Controller
 {
-    public function profil(){
-         $data['title'] = 'profil';
-         $dataAdmin = DB::select('SELECT * from users WHERE role_id=1;');
-        return view('dashboard.profil',['dataAdmin' => $dataAdmin],$data);
-    }
+				public function profil()
+				{
+								$data['title'] = 'profil';
+								return view('dashboard.profil', $data);
+				}
 
-    public function editProfil(Request $request,$id){
-    $request->session()->regenerate();
-    DB::table('users')->where('id', $id)->update([
-    'full_name' => $request->nama,
-    'email' => $request->email,
-     ]);
-    return redirect()->route('profilAdmin');
-    }
+				public function editProfil(Request $request)
+				{
+								$data = $request->validate([
+												'full_name' => ['required', 'max:191'],
+												'email' => ['required', 'email'],
+								]);
+								auth()
+												->user()
+												->update($data);
 
+								return redirect()
+												->route('profilAdmin')
+												->with('message', 'Your Profil has been Updated');
+				}
 }

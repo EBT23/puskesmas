@@ -40,12 +40,6 @@
 
     <link rel="stylesheet" href="{{ asset('asset/plugins/toastr/toastr.min.css') }}">
 
-
-
-
-
-
-
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
