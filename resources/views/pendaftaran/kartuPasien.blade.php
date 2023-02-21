@@ -19,6 +19,7 @@
             <div class="card-body" align="center">
                 {{-- <p align="center"><b>Kartu Pasien</b></p> --}}
                 <table class="table bg-gradient-white table-borderless table-white shadow p-3 mb-5 bg-white rounded" border="3" align="center" style="width: 60%">
+                @forelse ($data->pasien as $item)
                     <tr>
                         <td colspan="3" align="center"><b>
                             PEMERINTAH KABUPATEN BANTUL <br>
@@ -57,8 +58,16 @@
                     <tr>
                         <td colspan="3" align=" center"><b>KARTU INI HARUS DIBAWA TIAP BEROBAT</b></td>
                     </tr>
+                    <a class="btn btn-outline-info" href="{{ url('cetakKartu') }}" target="_blank" role="button">Cetak Kartu</a>
+                    @empty
+                    
+                        <p class="px-4 py-3 bg-info text-white" align="center" >
+                            <b>Kartu Berobat Belum Tersedia!</b>
+                        </p>
+                    
+                    @endforelse
                 </table>
-                <a class="btn btn-outline-info" href="{{ url('cetakKartu') }}" target="_blank" role="button">Cetak Kartu</a>
+               
             </div>
         </div>
     </div><!-- /.row -->

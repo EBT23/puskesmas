@@ -14,9 +14,9 @@
                 </ol>
             </div><!-- /.col -->
         </div>
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Data Pasien</h3>
+        <div class="card shadow">
+            <div class="card-header bg-primary">
+                <h3 class="card-title ">Data Pasien</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body col-lg">
