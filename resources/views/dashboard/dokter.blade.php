@@ -77,7 +77,7 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th scope="col">#</th>
+								<th scope="col" class="10%">#</th>
 								<th scope="col">Nama Dokter</th>
 								<th scope="col">Poli</th>
 								<th scope="col">Alamat</th>
@@ -85,7 +85,7 @@
 								<th scope="col">Tanggal Lahir</th>
 								<th scope="col">No Telepon</th>
 								<th scope="col">Jenis Kelamin</th>
-								<th scope="col">Action</th>
+								<th scope="col" width="15%">Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -100,8 +100,8 @@
 									<td>{{ $d->tgl_lahir }}</td>
 									<td>{{ $d->no_telp }}</td>
 									<td>{{ $d->jk }}</td>
-									<td>
-										<a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1{{ $d->id }}">Edit</a>
+									<td class="d-flex">
+										<a class="btn btn-primary mr-2" data-toggle="modal" data-target="#exampleModal1{{ $d->id }}">Edit</a>
 
 										<!-- Modal -->
 										<div class="modal fade" id="exampleModal1{{ $d->id }}" tabindex="-1"

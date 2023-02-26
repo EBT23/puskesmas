@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Forgot Password</title>
+    <title>PUSKESMAS | Lupa Password</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -22,12 +22,12 @@
 
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ asset('assets/index2.html') }}"><b>Admin</b>LTE</a>
+            <a href="{{ asset('assets/index2.html') }}"><b>PUSKESMAS</b><br> SEWON</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
+                <p class="login-box-msg" style="text-align: justify">Kami akan mengirimkan tautan untuk mengubah kata sandi ke email kamu yang sudah terdaftar.</p>
 
                 <form action="{{ route('forget.password.post') }}" method="POST">
                     @csrf
@@ -47,17 +47,14 @@
 
                     <div class="row">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block">Send Password Reset Link</button>
+                            <button type="submit" class="btn btn-primary btn-block">Reset Password</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
 
-                <p class="mt-3 mb-1">
-                    <a href="{{ route('login') }}">Login</a>
-                </p>
-                <p class="mb-0">
-                    <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
+                <p class="mt-3 mb-1" align="center">
+                    Kembali ke halaman <a href="{{ route('login') }}">Login</a> atau <a href="{{ route('register') }}" class="text-center"> Daftar</a>
                 </p>
             </div>
             <!-- /.login-card-body -->

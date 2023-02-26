@@ -39,24 +39,7 @@ class ComposerAutoloaderInitfad5bcc8b482c484aad77a0c1633a176
                 $loader->set($namespace, $path);
             }
 
-            $map = require __DIR__ . '/autoload_psr4.php';
-            foreach ($map as $namespace => $path) {
-                $loader->setPsr4($namespace, $path);
-            }
-
-            $classMap = require __DIR__ . '/autoload_classmap.php';
-            if ($classMap) {
-                $loader->addClassMap($classMap);
-            }
-        }
-
-        $loader->register(true);
-
-        if ($useStaticLoader) {
-            $includeFiles = Composer\Autoload\ComposerStaticInitfad5bcc8b482c484aad77a0c1633a176::$files;
-        } else {
-            $includeFiles = require __DIR__ . '/autoload_files.php';
-        }
+        $includeFiles = \Composer\Autoload\ComposerStaticInitfad5bcc8b482c484aad77a0c1633a176::$files;
         foreach ($includeFiles as $fileIdentifier => $file) {
             composerRequirefad5bcc8b482c484aad77a0c1633a176($fileIdentifier, $file);
         }

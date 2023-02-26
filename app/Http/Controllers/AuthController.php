@@ -32,7 +32,7 @@ class AuthController extends Controller
         ]);
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             // $user = Auth::User();
-        
+
             $request->session()->regenerate();
             return redirect()->intended('/dashboard');
         }
@@ -130,6 +130,7 @@ class AuthController extends Controller
         ]);
 
         $data['title'] = 'Login';
+        Alert::success('Success', 'Akun berhasil dibuat!');
         return view('auth/login', $data);
     }
 }

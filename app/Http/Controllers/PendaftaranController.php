@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Symfony\Contracts\Service\Attribute\Required;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PendaftaranController extends Controller
 {
@@ -26,7 +26,22 @@ class PendaftaranController extends Controller
 
         $user = Auth::user()->id;
 
-        $request->validate([]);
+        $request->validate([
+            'nama' => 'required',
+            'nik' => 'required',
+            'tgl_lahir' => 'required',
+            'tempat_lahir' => 'required',
+            'alamat' => 'required',
+            'nama_kk' => 'required',
+            'jk' => 'required',
+            'status' => 'required',
+            'agama' => 'required',
+            'no_telp' => 'required',
+            'pekerjaan' => 'required',
+            'pendidikan_terakhir' => 'required',
+            'jaminan_asuransi' => 'required',
+            'no_jaminan' => 'required',
+        ]);
 
         Pendaftaran::create([
             'id_user' => $user,
@@ -49,7 +64,7 @@ class PendaftaranController extends Controller
         ]);
 
         $data['title'] = 'Kartu Pasien';
-        return view('pendaftaran/cetak_kartu', $data)->with('success', 'Task Created Successfully!');
+        return view('pendaftaran/kartuPasien', $data)->with('success', 'Task Created Successfully!');
     }
 
     public function kartuPasien()
@@ -71,7 +86,7 @@ class PendaftaranController extends Controller
         $user = auth()->id();
         $getPDF = Pendaftaran::where('id_user', $user)->get();
 
-        $pdf = FacadePdf::loadView('pendaftaran/cetakPDF', ['cetakPDF' => $getPDF]);
+        $pdf = Pdf::loadView('pendaftaran/cetakPDF', ['cetakPDF' => $getPDF]);
         $pdf->setPaper('A4', 'landscape');
         return $pdf->stream('kartu_pasien.pdf');
     }
@@ -87,6 +102,7 @@ class PendaftaranController extends Controller
     {
 
         $data = [
+            'id_user' => Auth::user()->id,
             'status' => $request->status,
             'riwayat_penyakit_terdahulu' => $request->riwayat_penyakit_terdahulu,
             'riwayat_penyakit_keluarga' => $request->riwayat_penyakit_keluarga,
@@ -97,9 +113,10 @@ class PendaftaranController extends Controller
             'hambatan_bahasa' => $request->hambatan_bahasa,
             'hambatan_budaya' => $request->hambatan_budaya,
             'hambatan_mobilitas' => $request->hambatan_mobilitas,
-            'date_created' => time(),
-            'update_created' => time(),
+            'date_created' => now(),
+            'update_created' => now(),
         ];
+        // dd($data);
         DB::table('kajian_awal')->insert($data);
 
         return redirect()->route('kajian_awal');
