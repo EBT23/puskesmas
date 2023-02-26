@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pendaftaran;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -69,7 +71,7 @@ class PendaftaranController extends Controller
         $user = auth()->id();
         $getPDF = Pendaftaran::where('id_user', $user)->get();
 
-        $pdf = PDF::loadView('pendaftaran/cetakPDF', ['cetakPDF' => $getPDF]);
+        $pdf = FacadePdf::loadView('pendaftaran/cetakPDF', ['cetakPDF' => $getPDF]);
         $pdf->setPaper('A4', 'landscape');
         return $pdf->stream('kartu_pasien.pdf');
     }
