@@ -154,16 +154,16 @@ class AuthController extends Controller
             ]
         );
         $id_user = rand(000000, 999999);
-        User::create([
-            'id_user' =>  $id_user,
+        $user = [
+            'id' =>  $id_user,
             'full_name' => $request->full_name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'role_id' => 2,
             'is_active' => 1,
             'created_at' => now(),
-        ]);
-        Pendaftaran::create([
+        ];
+        $pendaftaran = [
             'id_user' => $id_user,
             'nik' => $request->nik,
             'tgl_lahir' => $request->tgl_lahir,
@@ -180,8 +180,8 @@ class AuthController extends Controller
             'no_jaminan' => $request->no_jaminan,
             'no_rm' =>  'RM' . rand(000000, 99999),
             'created_at' => now()
-        ]);
-        Kajian::create([
+        ];
+        $kajian = [
             'id_user' => $id_user,
             'status' => $request->status,
             'riwayat_penyakit_terdahulu' => $request->riwayat_penyakit_terdahulu,
@@ -193,9 +193,14 @@ class AuthController extends Controller
             'hambatan_bahasa' => $request->hambatan_bahasa,
             'hambatan_budaya' => $request->hambatan_budaya,
             'hambatan_mobilitas' => $request->hambatan_mobilitas,
-            'date_created' => now(),
-            'update_created' => now(),
-        ]);
+            'created_at' => now(),
+        ];
+
+        DB::table('users')->insert($user);
+        DB::table('pendaftaran')->insert($pendaftaran);
+        DB::table('kajian_awal')->insert($kajian);
+
+
         $data['title'] = 'Login';
         Alert::success('Success', 'Akun berhasil dibuat!');
         return view('auth/login', $data);

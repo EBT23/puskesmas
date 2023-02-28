@@ -43,7 +43,7 @@
                         <tr>
                             <th>NAMA</th>
                             <th>:</th>
-                            <td>{{ $item->nama }}</td>
+                            <td>{{ Auth::user()->full_name }}</td>
                         </tr>
                         <tr>
                             <th>TGL LAHIR</th>

@@ -26,6 +26,7 @@ class PendaftaranController extends Controller
         $user = auth()->id();
         $getKartu = Pendaftaran::where('id_user', $user)->get();
 
+        $getUser = DB::select('SELECT * from users');
         return view('pendaftaran/kartuPasien', [
             'title' => 'Kartu Pasien',
             'data' => (object) [

@@ -40,7 +40,7 @@
                         <tr>
                             <th style="width: 30%" align="left">NAMA</th>
                             <th style="width: 1%" align="left">:</th>
-                            <td>{{ $item->nama }}</td>
+                            <td>{{ Auth::user()->full_name }}</td>
                         </tr>
                         <tr>
                             <th style="width: 30%" align="left">TGL LAHIR</th>
