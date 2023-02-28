@@ -251,13 +251,10 @@ class ComposerStaticInitfad5bcc8b482c484aad77a0c1633a176
         array (
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher-contracts',
         ),
-<<<<<<< HEAD
-=======
         'Symfony\\Component\\Yaml\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
->>>>>>> 9ce486d8c5a314d2444ba654e2ae4507ce694234
         'Symfony\\Component\\VarDumper\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
@@ -340,11 +337,7 @@ class ComposerStaticInitfad5bcc8b482c484aad77a0c1633a176
         ),
         'Psr\\Log\\' => 
         array (
-<<<<<<< HEAD
-            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
-=======
             0 => __DIR__ . '/..' . '/psr/log/src',
->>>>>>> 9ce486d8c5a314d2444ba654e2ae4507ce694234
         ),
         'Psr\\Http\\Message\\' => 
         array (
