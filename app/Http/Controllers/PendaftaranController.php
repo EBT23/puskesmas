@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Symfony\Contracts\Service\Attribute\Required;
 use Barryvdh\DomPDF\Facade\Pdf;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PendaftaranController extends Controller
 {
@@ -117,7 +118,7 @@ class PendaftaranController extends Controller
         ];
         // dd($data);
         DB::table('kajian_awal')->insert($data);
-
+        Alert::success('Success', 'Pengisian kajian awal!');
         return redirect()->route('kajian_awal');
     }
 }

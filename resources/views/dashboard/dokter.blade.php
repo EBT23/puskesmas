@@ -1,13 +1,19 @@
 @extends('layouts.base', ['title' => "$title - Admin"])
 
 @section('content')
+@include('sweetalert::alert')
+@if ($errors->any())
+@foreach ($errors->all() as $err)
+    <p class="alert alert-danger">{{ $err }}</p>
+@endforeach
+@endif
 	<div class="content-header">
 		<div class="container-fluid">
-			@if (Session::has('success'))
+			{{-- @if (Session::has('success'))
 				<div class="alert alert-success">
 					{{ Session::get('success') }}
 				</div>
-			@endif
+			@endif --}}
 			<div class="row mb-2">
 				<div class="col-sm-6">
 					<h1 class="m-0">{{ $title }}</h1>

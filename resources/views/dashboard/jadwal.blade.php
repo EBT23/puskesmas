@@ -1,6 +1,12 @@
 @extends('layouts.base', ['title' => "Jadwal - Pasien"])
 
 @section('content')
+@include('sweetalert::alert')
+@if ($errors->any())
+@foreach ($errors->all() as $err)
+    <p class="alert alert-danger">{{ $err }}</p>
+@endforeach
+@endif
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -32,6 +38,7 @@
                                     <option value="{{ $dd->id }}">{{ $dd->nama_dokter}}</option>
                                     @endforeach
                                 </select>
+                                
                                 {{-- <input type="text" class="form-control" id="dokter_id" name="dokter_id" placeholder="Nama Dokter"> --}}
                             </div>
                             <div class="form-group">

@@ -1,6 +1,12 @@
 @extends('layouts.base', ['title' => "$title - Pasien"])
 
 @section('content')
+@include('sweetalert::alert')
+@if ($errors->any())
+@foreach ($errors->all() as $err)
+    <p class="alert alert-danger">{{ $err }}</p>
+@endforeach
+@endif
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">

@@ -1,6 +1,7 @@
 @extends('layouts.base', ['title' => "$title - Pasien"])
 
 @section('content')
+@include('sweetalert::alert')
 	<div class="content-header">
 		<div class="container-fluid">
 			<div class="row mb-2">
@@ -14,17 +15,16 @@
 					</ol>
 				</div><!-- /.col -->
 			</div>
-			<div class="card">
-				<div class="card-header">
-					<h3 class="card-title">Data Jadwal Dokter</h3>
+			<div class="card shadow">
+				<div class="card-header bg-success card-outline card-info">
+					<h3 class="card-title">Data Penyakit</h3>
 				</div>
 				<!-- /.card-header -->
 				<div class="card-body col-lg">
 					<form method="POST" action="{{ route('penyakit.post') }}">
 						@csrf
-						{{ method_field('DELETE') }}
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-3">
 								<div class="form-group">
 									<label for="nama_penyakit">Nama Penyakit</label>
 									<input type="text" class="form-control" id="nama_penyakit" name="nama_penyakit" placeholder="Nama Penyakit">

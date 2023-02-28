@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PUSKESMAS | Lupa Password</title>
+    <title>PUSKESMAS PATUK II| Lupa Password</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -22,7 +22,7 @@
 
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ asset('assets/index2.html') }}"><b>PUSKESMAS</b><br> SEWON</a>
+            <a href="{{ asset('assets/index2.html') }}"><b>PUSKESMAS</b><br> PATUK II</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
