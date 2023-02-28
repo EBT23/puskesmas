@@ -14,23 +14,22 @@ class CreatePendaftaranTable extends Migration
     public function up()
     {
         Schema::create('pendaftaran', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_pendaftaran');
             $table->integer('id_user');
-            $table->string('nama');
-            $table->integer('nik');
+            $table->string('nik', 16);
             $table->date('tgl_lahir');
-            $table->string('tempat_lahir');
-            $table->string('alamat');
-            $table->string('nama_kk');
+            $table->string('tempat_lahir', 50);
+            $table->string('alamat', 60);
+            $table->string('nama_kk', 50);
             $table->enum('jk', ['Laki-laki', 'Perempuan']);
-            $table->enum('status', ['Belum Kawin', 'Sudah Kawin', 'Cerai Hidup', 'Cerai Mati']);
+            $table->enum('sk', ['Belum Kawin', 'Sudah Kawin', 'Cerai Hidup', 'Cerai Mati']);
             $table->enum('agama', ['Budha', 'Hindu', 'Islam', 'Kristen', 'Katolik', 'Konghucu']);
-            $table->string('no_telp');
-            $table->string('pekerjaan');
-            $table->string('pendidikan_terakhir');
+            $table->string('no_telp', 15);
+            $table->string('pekerjaan', 20);
+            $table->string('pendidikan_terakhir', 20);
             $table->enum('jaminan_asuransi', ['BPJS', 'JKN', 'Jamkesda', 'Jamkesos']);
-            $table->string('no_jaminan');
-            $table->string('no_rm');
+            $table->string('no_jaminan', 20);
+            $table->string('no_rm', 20);
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
         });
