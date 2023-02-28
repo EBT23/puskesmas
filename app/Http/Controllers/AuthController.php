@@ -178,7 +178,7 @@ class AuthController extends Controller
             'pendidikan_terakhir' => $request->pendidikan_terakhir,
             'jaminan_asuransi' => $request->jaminan_asuransi,
             'no_jaminan' => $request->no_jaminan,
-            'no_rm' =>  'RM' . rand(100000, 99999),
+            'no_rm' =>  'RM' . rand(000000, 99999),
             'created_at' => now()
         ]);
         Kajian::create([

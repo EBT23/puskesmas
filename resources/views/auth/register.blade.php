@@ -34,7 +34,7 @@
                   </div>
                   <div class="bs-stepper-content">
                     <!-- your steps content here -->
-                    <form action="{{ route('register') }}" class="needs-validation" onsubmit="return false" novalidate="" method="post">
+                    <form action="{{ route('register') }}"  method="post">
                       @csrf
                     <div id="daftar-part" class="content" role="tabpanel" aria-labelledby="daftar-part-trigger">
                         <div class="form-group">
@@ -93,11 +93,11 @@
                                 <div class="form-group">
                                   <label for="sk">Status Pernikahan <span class="text-danger font-weight-bold">*</span></label>
                                   <select class="form-control"  id="sk" name="sk" required>
-                                      <option>Status Pernikahan</option>
-                                      <option>Belum Kawin</option>
-                                      <option>Sudah Kawin</option>
-                                      <option>Cerai Hidup</option>
-                                      <option>Cerai Mati</option>
+                                      <option value="Status Pernikahan">Status Pernikahan</option>
+                                      <option value="Belum Kawin">Belum Kawin</option>
+                                      <option value="Sudah Kawin">Sudah Kawin</option>
+                                      <option value="Cerai Hidup">Cerai Hidup</option>
+                                      <option value="Cerai Mati">Cerai Mati</option>
                                   </select>
                               </div>
                             </div>
