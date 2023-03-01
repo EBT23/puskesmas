@@ -20,8 +20,8 @@
 					</ol>
 				</div><!-- /.col -->
 			</div>
-			<div class="card">
-				<div class="card-header">
+			<div class="card shadow">
+				<div class="card-header bg-success card-outline card-warning">
 					<h3 class="card-title">Data Jadwal Dokter</h3>
 				</div>
 				<!-- /.card-header -->
@@ -60,7 +60,7 @@
 								</div>
 							</div>
 						</div>
-						<button type="submit" class="btn btn-primary">Submit</button>
+						<button type="submit" class="btn btn-outline-primary">Simpan</button>
 					</form>
 				</div>
 			</div><!-- /.row -->

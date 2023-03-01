@@ -61,7 +61,7 @@
                     </tr>
                     
                 </table>
-                <a class="btn btn-outline-info" href="{{ url('cetakKartu') }}" target="_blank" role="button">Cetak Kartu</a>
+                <a class="btn btn-outline-info" href="{{ url('cetakKartu') }}" target="_blank" role="button"><i class="fas fa-print"></i> Cetak Kartu</a>
                     @empty
                     
                         <p class="px-4 py-3 bg-info text-white" align="center" >

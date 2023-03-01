@@ -16,7 +16,7 @@
 				</div><!-- /.col -->
 			</div>
 			<div class="card shadow">
-				<div class="card-header bg-success card-outline card-info">
+				<div class="card-header bg-success card-outline card-warning">
 					<h3 class="card-title">Data Penyakit</h3>
 				</div>
 				<!-- /.card-header -->
@@ -31,7 +31,7 @@
 								</div>
 							</div>
 						</div>
-						<button type="submit" class="btn btn-primary">Submit</button>
+						<button type="submit" class="btn btn-outline-primary">Tambah</button>
 					</form>
 				</div>
 				<div class="card-body">
@@ -50,12 +50,12 @@
 									<td>{{ $i + 1 }}</td>
 									<td>{{ $dp->nama_penyakit }}</td>
 									<td class="d-flex">
-										<button type="button" class="btn btn-primary mr-2" data-toggle="modal"
-											data-target="#modal-lg{{ $dp->id }}">Edit</button>
+										<button type="button" class="btn btn-outline-primary mr-2" data-toggle="modal"
+											data-target="#modal-lg{{ $dp->id }}"><i class="fas fa-pencil-alt"></i></button>
 										<form action="hapuspenyakit/{{ $dp->id }}" method="POST">
 											@method('DELETE')
 											@csrf
-											<button class="btn btn-danger" type="submit">Hapus</button>
+											<button class="btn btn-outline-danger" type="submit"><i class="fas fa-trash-alt"></i></button>
 										</form>
 									</td>
 
@@ -80,7 +80,7 @@
 			<div class="modal fade" id="modal-lg{{ $dp->id }}">
 				<div class="modal-dialog modal-lg">
 					<div class="modal-content">
-						<div class="modal-header">
+						<div class="modal-header bg-success card-outline card-warning">
 							<h4 class="modal-title">Edit Data</h4>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
@@ -101,8 +101,8 @@
 								</div>
 						</div>
 						<div class="modal-footer justify-content-right">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">Save changes</button>
+							<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Kembali</button>
+							<button type="submit" class="btn btn-outline-primary">Simpan</button>
 						</div>
 						</form>
 					</div>

@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('asset/plugins/toastr/toastr.min.css') }}">
-
+    <link rel="shortcut icon" href="{{ asset('assets/dist/img/LOGO.png') }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -47,7 +47,7 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">
+            <img class="animation__shake" src="{{ asset('assets/dist/img/LOGO.png') }}" alt="LOGO" height="100" width="100"><P><b>PUSKESMAS PATUK II</b></P>
         </div>
 
         @include('layouts.navbar')

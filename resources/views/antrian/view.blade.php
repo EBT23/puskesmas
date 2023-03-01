@@ -15,8 +15,8 @@
                     </ol>
                 </div><!-- /.col -->
             </div>
-            <div class="card">
-                <div class="card-header">
+            <div class="card shadow">
+                <div class="card-header bg-success card-outline card-warning">
                     <h3 class="card-title">Data {{ $title }}</h3>
                 </div>
                 <!-- /.card-header -->
@@ -46,7 +46,7 @@
             </div><!-- /.row -->
             <section class="content">
                 <!-- Default box -->
-                <div class="card card-solid">
+                <div class="card shadow card-solid">
                     <div class="card-body pb-0">
                         <div class="row">
                             @foreach ($antrian as $ant)

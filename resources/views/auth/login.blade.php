@@ -8,7 +8,7 @@
         @endforeach
     @endif
     <!-- /.login-logo -->
-    <div class="card card-outline card-primary">
+    <div class="card card-outline card-success">
         <div class="card-header text-center">
             <a href="../../index2.html" class="h1"><b>PUSKESMAS</b><br> PATUK II</a>
         </div>

@@ -14,8 +14,8 @@
                 </ol>
             </div><!-- /.col -->
         </div>
-        <div class="card">
-            <div class="card-header">
+        <div class="card shadow">
+            <div class="card-header bg-success card-outline card-warning">
                 <h3 class="card-title">Data Obat</h3>
             </div>
             <!-- /.card-header -->
@@ -30,7 +30,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-outline-primary">Tambah</button>
                 </form>
             </div>
             <div class="card-body">
@@ -50,11 +50,11 @@
                             <td>{{ $i+1 }}</td>
                             <td>{{ $do->nama_obat }}</td>
                             <td class="d-flex">
-                                <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#modal-lg{{ $do->id }}">Edit</button>
+                                <button type="button" class="btn btn-outline-primary mr-2" data-toggle="modal" data-target="#modal-lg{{ $do->id }}"><i class="fas fa-pencil-alt"></i></button>
                                 <form action="hapusobat/{{$do->id }}" method="POST">
                                     @method('DELETE')
                                     @csrf
-                                    <button class="btn btn-danger" type="submit">Hapus</button>
+                                    <button class="btn btn-outline-danger" type="submit"><i class="fas fa-trash-alt"></i></button>
                                 </form>
                             </td>
 
@@ -79,7 +79,7 @@
     <div class="modal fade" id="modal-lg{{ $do->id }}">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header bg-success card-outline card-warning">
                     <h4 class="modal-title">Edit Data</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -100,8 +100,8 @@
                         </div>
                 </div>
                 <div class="modal-footer justify-content-right">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Kembali</button>
+                    <button type="submit" class="btn btn-outline-primary">Simpan</button>
                 </div>
                 </form>
             </div>

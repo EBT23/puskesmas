@@ -4,7 +4,7 @@
     <div class="container">
     <div class="col-md-12">
             <div class="card card-default shadow">
-              <div class="card-header bg-gradient-green">
+              <div class="card-header bg-gradient-green card-outline card-warning">
                 <h3 class="card-title">Daftar</h3>
               </div>
               <div class="card-body p-0">
@@ -57,7 +57,7 @@
                             <input id="password"  name="password"  type="password" class="form-control" placeholder="Ulangi password" required>
                             <div class="invalid-feedback">Silahkan diisi Password </div>
                           </div>
-                      <button class="btn btn-primary" onclick="stepper.next()">Next</button>
+                      <button class="btn btn-primary" onclick="stepper.next()">Berikutnya</button>
                     </div>
                     <div id="form-part" class="content" role="tabpanel" aria-labelledby="form-part-trigger">
                         <div class="row">
@@ -145,8 +145,8 @@
                                 </div>
                             </div>
                             </div>
-                            <button class="btn btn-primary mr-2" onclick="stepper.previous()">Previous</button>
-                            <button class="btn btn-primary" onclick="stepper.next()">Next</button>
+                            <button class="btn btn-primary mr-2" onclick="stepper.previous()">Kembali</button>
+                            <button class="btn btn-primary" onclick="stepper.next()">Berikutnya</button>
                           </div>
 
                     <div id="kajian-part" class="content" role="tabpanel" aria-labelledby="kajian-part-trigger">
@@ -206,8 +206,8 @@
                             </div>
                         </div>
                     </div>
-                      <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button class="btn btn-primary" onclick="stepper.previous()">Kembali</button>
+                      <button type="submit" class="btn btn-primary">Daftar</button>
                     </div>
                     </form>
                   </div>
