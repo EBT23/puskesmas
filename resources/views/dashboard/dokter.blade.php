@@ -152,7 +152,7 @@
 																<div class="form-group col-sm-6">
 																	<label for="tanggal_lahir">Tanggal Lahir</label>
 																	<input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir"
-																		value="{{ $d->tgl_lahir }}" aria-describedby="tanggal_lahir" required>
+																		value="{{ $d->tgl_lahir }}" aria-describedby="tanggal_lahir">
 																</div>
 																<div class="form-group col-sm-6">
 																	<label for="no_telepon">No Telepon</label>

@@ -1,6 +1,7 @@
 @extends('layouts.base', ['title' => "$title - Admin"])
 
 @section('content')
+@include('sweetalert::alert')
 	<div class="content-header">
 		<div class="container-fluid">
 			@if (Session::has('success'))

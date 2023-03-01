@@ -60,7 +60,7 @@ class JadwalController extends Controller
         ];
 
         JadwalDokter::updateById($id, $data);
-        Alert::success('Success', 'Jadwal Dokter berhasil diubah!!');
+        Alert::success('Success', 'Jadwal Dokter berhasil diedit!!');
         return redirect()->route('jadwal');
     }
 

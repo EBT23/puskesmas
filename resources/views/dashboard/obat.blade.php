@@ -1,6 +1,7 @@
 @extends('layouts.base', ['title' => "$title - Pasien"])
 
 @section('content')
+@include('sweetalert::alert')
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">

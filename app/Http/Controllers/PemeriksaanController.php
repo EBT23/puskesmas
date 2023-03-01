@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PemeriksaanController extends Controller
 {
@@ -71,6 +72,7 @@ class PemeriksaanController extends Controller
                'update_created' => date('Y-m-d'),
           ];
           DB::table('pemeriksaan')->insert($data);
+          Alert::success('Success', 'Pemeriksaan berhasil ditambah!!');
           return redirect()->route('pemeriksaan');
      }
 }

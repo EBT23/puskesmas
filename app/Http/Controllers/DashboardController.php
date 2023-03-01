@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dokter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -111,5 +112,23 @@ class DashboardController extends Controller
 		Alert::success('Success', 'Data Dokter Berhasil  Ditambah!!');
 		return redirect()
 			->route('dokter');
+	}
+	function edit_dokter(Request $request, $id)
+	{
+		$data = [
+			'id_poli' => $request->poli,
+			'nama_dokter' => $request->nama_dokter,
+			'alamat' => $request->alamat,
+			'no_telp' => $request->no_telepon,
+			'tgl_lahir' => $request->tanggal_lahir,
+			'tempat_lahir' => $request->tempat_lahir,
+			'jk' => $request->jenis_kelamin,
+			'date_created' => date('Y-m-d'),
+			'update_created' => date('Y-m-d'),
+		];
+
+		Dokter::updateById($id, $data);
+		Alert::success('Success', 'Dokter berhasil diedit!!');
+		return redirect()->route('dokter');
 	}
 }

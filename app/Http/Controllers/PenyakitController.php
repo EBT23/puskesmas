@@ -34,6 +34,7 @@ class PenyakitController extends Controller
             'date_created' => date('Y-m-d'),
             'update_created' => date('Y-m-d'),
         ]);
+        Alert::success('Success', 'Nama penyakit berhasil diubah!!');
         return redirect()->route('penyakit');
     }
 
