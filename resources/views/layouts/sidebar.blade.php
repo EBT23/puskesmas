@@ -110,9 +110,9 @@
                     </a>
                 </li>
                 @else
-                <li class="nav-item">
+                <li class="nav-item menu-open">
                     <a href="/kartuPasien" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-hospital"></i>
                         <p>
                             Kartu Pasien
                             {{-- <i class="right fas fa-angle-left"></i> --}}
@@ -135,9 +135,9 @@
                 </li>
                 <li class="nav-item menu-open">
                     <a href="{{ route('noAntrian') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
+                        <i class="nav-icon fas fa-medkit"></i>
                         <p>
-                            No Antrian
+                            Layanan
                             {{-- <i class="right fas fa-angle-left"></i> --}}
                         </p>
                     </a>

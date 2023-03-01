@@ -21,27 +21,25 @@
                 </div>
                 <!-- /.card-header -->
 
-                <div class="card-body" style="height: 120px; ">
-
+                <div class="card-body" style="height: 400px; ">
                     <div class="row">
-
                         @foreach ($poli as $po)
                             <form method="POST" action="{{ route('noAntrian.add') }}">
                                 @csrf
-                                <div class="col-md-3">
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-8">
                                     <input type="text" name="nama_poli" value="{{ $po->nama_poli }}" hidden>
                                     <input type="text" name="id_poli" value="{{ $po->id }}" hidden>
-                                    <button type="submit" class="btn btn-secondary"
-                                        style="font-size: 200%; ">{{ $po->nama_poli }}</button>
-
+                                    <button type="submit" class="btn btn-secondary btn-lg"
+                                        style="font-size: 300%; "><i class="fa fa-link"></i> <br>{{ $po->nama_poli }}</button>
+                                        </div>
                                 </div>
+                            </div>
                             </form>
                         @endforeach
-
                     </div>
-
                 </div>
-
                 <!-- /.card-body -->
             </div><!-- /.row -->
             <section class="content">
