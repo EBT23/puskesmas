@@ -10,7 +10,7 @@ class PemeriksaanController extends Controller
 {
      public function pemeriksaan()
      {
-          $data['title'] = 'pemeriksaan';
+          $data['title'] = 'Pemeriksaan';
           $dataAdmin = DB::select('SELECT * from users WHERE role_id=1;');
           $dataPasien = DB::select('SELECT * FROM users WHERE role_id=2;');
           $dataDokter = DB::table('dokter')->get();

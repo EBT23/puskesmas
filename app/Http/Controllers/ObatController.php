@@ -11,7 +11,7 @@ class ObatController extends Controller
 {
     public function obat()
     {
-        $data['title'] = 'Obat';
+        $data['title'] = 'Kelola Obat';
         $dataObat = DB::select('SELECT * from obat');
         return view('dashboard.obat', ['dataObat' => $dataObat], $data);
     }

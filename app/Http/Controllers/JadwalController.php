@@ -11,7 +11,7 @@ class JadwalController extends Controller
 {
     public function jadwal()
     {
-        $data['title'] = 'Jadwal';
+        $data['title'] = 'Kelola Jadwal Dokter';
         return view('dashboard.jadwal', [
             'jadwalDokter' => JadwalDokter::getData(),
             'dataDokter' =>  DB::table('dokter')->get(),

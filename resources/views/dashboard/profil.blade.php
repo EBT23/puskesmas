@@ -1,4 +1,4 @@
-@extends('layouts.base', ['title' => "$title - Pasien"])
+@extends('layouts.base', ['title' => "$title"])
 
 @section('content')
 @include('sweetalert::alert')

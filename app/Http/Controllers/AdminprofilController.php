@@ -10,7 +10,7 @@ class AdminprofilController extends Controller
 {
 	public function profil()
 	{
-		$data['title'] = 'profil';
+		$data['title'] = 'Profil';
 		return view('dashboard.profil', $data);
 	}
 

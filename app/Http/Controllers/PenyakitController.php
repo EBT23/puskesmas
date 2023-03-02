@@ -10,7 +10,7 @@ class PenyakitController extends Controller
 {
     public function penyakit()
     {
-        $data['title'] = 'Penyakit';
+        $data['title'] = 'Kelola Penyakit';
         $dataPenyakit = DB::select('SELECT * from penyakit');
         return view('dashboard.penyakit', ['dataPenyakit' => $dataPenyakit], $data);
     }
