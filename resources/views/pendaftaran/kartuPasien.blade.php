@@ -23,26 +23,26 @@
 					</span>
 					<div class="row" style="position: relative; top: -270px; z-index: 2;color: #030303; margin-left: 30px; ">
 						<span>
-							<table style="border: 1px solid black;  font-size: 18px;">
-								<tr style="border: 1px solid black; padding: 10px;">
-									<th style="border: 1px solid black; padding: 10px;">No RM</th>
-									<td style="border: 1px solid black; padding: 10px;">:</td>
-									<td style="border: 1px solid black; padding: 10px; width: 90%;">Aj-9989</td>
+							<table style="  font-size: 18px;">
+								<tr style=" padding: 10px;">
+									<th style=" padding: 10px;">No RM</th>
+									<td style=" padding: 10px;">:</td>
+									<td style=" padding: 10px; width: 90%;">Aj-9989</td>
 								</tr>
-								<tr style="border: 1px solid black; padding: 10px;">
-									<th style="border: 1px solid black; padding: 10px;">Nama</th>
-									<td style="border: 1px solid black; padding: 10px;">:</td>
-									<td style="border: 1px solid black; padding: 10px; width: 90%;">Ade Rohmat Maulana</td>
+								<tr style=" padding: 10px;">
+									<th style=" padding: 10px;">Nama</th>
+									<td style=" padding: 10px;">:</td>
+									<td style=" padding: 10px; width: 90%;">Ade Rohmat Maulana</td>
 								</tr>
-								<tr style="border: 1px solid black; padding: 10px;">
-									<th style="border: 1px solid black; padding: 10px;">NIK</th>
-									<td style="border: 1px solid black; padding: 10px;">:</td>
-									<td style="border: 1px solid black; padding: 10px; width: 90%;">3210110408980081</td>
+								<tr style=" padding: 10px;">
+									<th style=" padding: 10px;">NIK</th>
+									<td style=" padding: 10px;">:</td>
+									<td style=" padding: 10px; width: 90%;">3210110408980081</td>
 								</tr>
-								<tr style="border: 1px solid black; padding: 10px;">
-									<th style="border: 1px solid black; padding: 10px;">Alamat</th>
-									<td style="border: 1px solid black; padding: 10px;">:</td>
-									<td style="border: 1px solid black; padding: 10px; width: 90%;">Blok Jumaah RT/RW 001/012 Desa Burujul
+								<tr style=" padding: 10px;">
+									<th style=" padding: 10px;">Alamat</th>
+									<td style=" padding: 10px;">:</td>
+									<td style=" padding: 10px; width: 90%;">Blok Jumaah RT/RW 001/012 Desa Burujul
 										Wetan Kec.Jatiwangi,
 										Kab. Majalengka
 									</td>
