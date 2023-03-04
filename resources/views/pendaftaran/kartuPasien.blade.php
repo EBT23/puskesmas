@@ -18,7 +18,9 @@
         </div>
         <div class="form group">
             <div class="card-body" align="center">
-                {{-- <p align="center"><b>Kartu Pasien</b></p> --}}
+                
+                <img src="{{ asset('assets/dist/img/kartu.jpg') }}" class="img-fluid">
+                {{-- <p align="center"><b>Kartu Pasien</b></p>
                 <table class="table bg-gradient-white table-borderless table-white shadow p-3 mb-5 bg-white rounded" border="3" align="center" style="width: 60%">
                 @forelse ($data->pasien as $item)
                     <tr>
@@ -69,7 +71,7 @@
                         </p>
                     
                     @endforelse
-            </div>
+            </div> --}}
         </div>
     </div><!-- /.row -->
 </div><!-- /.container-fluid -->
