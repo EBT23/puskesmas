@@ -59,14 +59,14 @@ class PemeriksaanController extends Controller
 
      function pemeriksaanPost(Request $request)
      {
+          // dd($request->all());
           $data = [
                'id_user' => $request->id_user,
-               'id_kajian' => $request->id_kajian,
                'id_tujuan' => $request->id_tujuan,
                'id_get_antrian' => $request->id_get_antrian,
                'id_dokter' => $request->id_dokter,
-               'id_penyakit' => $request->id_penyakit,
-               'id_obat' => $request->id_obat,
+               'id_penyakit' => json_encode($request->id_penyakit),
+               'id_obat' => json_encode($request->id_obat),
                'tgl_diperiksa' => $request->tgl_diperiksa,
                'date_created' => date('Y-m-d'),
                'update_created' => date('Y-m-d'),
