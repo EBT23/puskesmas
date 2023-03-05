@@ -36,17 +36,7 @@ height: 180px;"><i class="fa fa-link"></i>
                                             <br>{{ $po->nama_poli }}</button>
                                     </div>
                                 </div>
-                                {{-- <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-8">
-                                            <input type="text" name="nama_poli" value="{{ $po->nama_poli }}" hidden>
-                                            <input type="text" name="id_poli" value="{{ $po->id }}" hidden>
-                                            <button type="submit" class="btn btn-secondary btn-lg"
-                                                style="font-size: 300%; "><i class="fa fa-link"></i>
-                                                <br>{{ $po->nama_poli }}</button>
-                                        </div>
-                                    </div>
-                                </div> --}}
+                                
                             </form>
                         @endforeach
                     </div>

@@ -6,20 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
         @if (isset($title))
-        {{ __($title) }}
+            {{ __($title) }}
         @else
-        {{ config('app.name', 'Administrator - Puskesmas') }}
+            {{ config('app.name', 'Administrator - Puskesmas') }}
         @endif
     </title>
 
+
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- JQVMap -->
@@ -35,8 +38,11 @@
 
     {{-- datatables --}}
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap-select/dist/css/bootstrap-select.css') }}">
 
     <link rel="stylesheet" href="{{ asset('asset/plugins/toastr/toastr.min.css') }}">
     <link rel="shortcut icon" href="{{ asset('assets/dist/img/LOGO.png') }}">
@@ -47,7 +53,9 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('assets/dist/img/LOGO.png') }}" alt="LOGO" height="100" width="100"><P><b>PUSKESMAS PATUK II</b></P>
+            <img class="animation__shake" src="{{ asset('assets/dist/img/LOGO.png') }}" alt="LOGO" height="100"
+                width="100">
+            <P><b>PUSKESMAS PATUK II</b></P>
         </div>
 
         @include('layouts.navbar')
@@ -77,7 +85,6 @@
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
         $.widget.bridge('uibutton', $.ui.button)
-
     </script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -111,26 +118,29 @@
     <script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 
 
+    <script src="{{ asset('assets/plugins/bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
+
+
+
 
     <script>
         $(function() {
             $("#example1").DataTable({
-                "responsive": true
-                , "lengthChange": false
-                , "autoWidth": false
-                , "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
-                "paging": true
-                , "lengthChange": false
-                , "searching": false
-                , "ordering": true
-                , "info": true
-                , "autoWidth": false
-                , "responsive": true
-            , });
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
         });
-
     </script>
 
 </body>

@@ -2,7 +2,7 @@
 
 
 @section('content')
-@include('sweetalert::alert')
+    @include('sweetalert::alert')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -28,10 +28,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="id_user">Nama Pasien</label>
-                                    <select class="form-control" id="id_user" name="id_user">
-                                        <option>-pilih-</option>
+                                    <select class="form-control getid selectpicker" id="id_user" name="id_user"
+                                        data-virtual-scroll="false" data-live-search="true">
+                                        <option selected>-pilih-</option>
                                         @foreach ($dataPasien as $dapa)
-                                            <option value="{{ $dapa->id }}">{{ $dapa->full_name }}</option>
+                                            <option value="{{ $dapa->id }}">{{ $dapa->full_name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -39,21 +41,21 @@
                                 <div class="form-group">
                                     <label for="id_kajian">Kajian Awal</label>
                                     <select class="form-control" id="id_kajian" name="id_kajian">
-                                       <option value="">Pilih Kajian</option>
+                                        <option value="">Pilih Kajian</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="id_tujuan">Tujuan Pemeriksaan</label>
-                                    <select class="form-control" id="id_tujuan" name="id_tujuan">
+                                    <select class="form-control select" id="id_tujuan" name="id_tujuan">
                                         <option>-pilih-</option>
-                                        
+
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="id_get_antrian">Data Antrian</label>
                                     <select class="form-control" id="id_get_antrian" name="id_get_antrian">
                                         <option>-pilih-</option>
-                                        
+
                                     </select>
                                 </div>
                             </div>
@@ -69,8 +71,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="id_penyakit">Data Penyakit</label>
-                                    <select class="form-control" id="id_penyakit" name="id_penyakit">
-                                        <option>-pilih-</option>
+                                    <select class="form-control selectpicker" id="id_penyakit" name="id_penyakit"
+                                        data-actions-box="true" data-virtual-scroll="false" data-live-search="true" multiple
+                                        required>
+             
                                         @foreach ($dataPenyakit as $dp)
                                             <option value="{{ $dp->id }}">{{ $dp->nama_penyakit }}</option>
                                         @endforeach
@@ -78,8 +82,10 @@
                                 </div>
                                 <div class=" form-group">
                                     <label for="id_obat">Data Obat</label>
-                                    <select class="form-control" id="id_obat" name="id_obat">
-                                        <option>-pilih-</option>
+                                    <select class="form-control selectpicker" id="id_obat" name="id_obat"
+                                        data-actions-box="true" data-virtual-scroll="false" data-live-search="true" multiple
+                                        required>
+                                  
                                         @foreach ($dataObat as $do)
                                             <option value="{{ $do->id }}">{{ $do->nama_obat }}</option>
                                         @endforeach
@@ -135,28 +141,26 @@
             </table>
 
             </div> --}}
-
-
-
-
             </div><!-- /.row -->
-
-
-
-
         </div><!-- /.container-fluid -->
     </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
     <script>
         $(document).ready(function() {
-
-            $('#id_user').change(function() {
+            $('.getid').change(function() {
                 var id = $(this).val();
-                // console.log(id);
+                console.log(id);
                 $.ajax({
                     url: 'addKajianAwal/' + id,
-                    data : {"_token":"{{ csrf_token() }}"},
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
                     type: 'post',
                     dataType: 'json',
                     success: function(data) {
@@ -171,7 +175,9 @@
                 // console.log(id);
                 $.ajax({
                     url: 'addTujuanPemeriksaan/' + id,
-                    data : {"_token":"{{ csrf_token() }}"},
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
                     type: 'post',
                     dataType: 'json',
                     success: function(data) {
@@ -186,7 +192,9 @@
                 // console.log(id);
                 $.ajax({
                     url: 'addAntrian/' + id,
-                    data : {"_token":"{{ csrf_token() }}"},
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
                     type: 'post',
                     dataType: 'json',
                     success: function(data) {
@@ -197,6 +205,6 @@
                 });
             });
         });
-    </script>
-    <!-- /.content-header -->
-@endsection
+        $('.select').selectpicker(); <
+        script / >
+        @endsection
