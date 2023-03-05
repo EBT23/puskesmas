@@ -17,91 +17,45 @@
 
 			</div>
 			<div class="form group">
+				<div class="text-left ml-3">
+					<a href="{{ url('cetakKartu') }}" target="_blank" class="btn btn-primary">
+						<i class="fas fa-print"></i> Cetak
+					</a>
+				</div>
 				<div class="card-body row">
 					<span align="center" style="position: relative; z-index: 1; top: 0px;">
-						<img src="{{ asset('assets/dist/img/kartu.jpg') }}">
+						<img src="{{ asset('assets/dist/img/kartu-1.jpg') }}">
 					</span>
-					<div class="row" style="position: relative; top: -270px; z-index: 2;color: #030303; margin-left: 30px; ">
+					<div class="row" style="position: relative; top: -270px; z-index: 2;color: #000000; margin-left: 20px; ">
+						@foreach ($data->pasien as $item)
 						<span>
 							<table style="  font-size: 18px;">
 								<tr style=" padding: 10px;">
 									<th style=" padding: 10px;">No RM</th>
 									<td style=" padding: 10px;">:</td>
-									<td style=" padding: 10px; width: 90%;">Aj-9989</td>
+									<td style=" padding: 10px; width: 90%;">{{ $item->no_rm }}</td>
 								</tr>
 								<tr style=" padding: 10px;">
 									<th style=" padding: 10px;">Nama</th>
 									<td style=" padding: 10px;">:</td>
-									<td style=" padding: 10px; width: 90%;">Ade Rohmat Maulana</td>
+									<td style=" padding: 10px; width: 90%;">{{ Auth::user()->full_name }}</td>
 								</tr>
 								<tr style=" padding: 10px;">
 									<th style=" padding: 10px;">NIK</th>
 									<td style=" padding: 10px;">:</td>
-									<td style=" padding: 10px; width: 90%;">3210110408980081</td>
+									<td style=" padding: 10px; width: 90%;">{{ $item->nik }}</td>
 								</tr>
 								<tr style=" padding: 10px;">
 									<th style=" padding: 10px;">Alamat</th>
 									<td style=" padding: 10px;">:</td>
-									<td style=" padding: 10px; width: 90%;">Blok Jumaah RT/RW 001/012 Desa Burujul
-										Wetan Kec.Jatiwangi,
-										Kab. Majalengka
-									</td>
-								</tr>
+									<td style=" padding: 10px; width: 200%;">{{ $item->alamat }}</td>
+								</tr>	
 							</table>
 						</span>
+						@endforeach
 					</div>
-					{{-- <p align="center"><b>Kartu Pasien</b></p>
-                <table class="table bg-gradient-white table-borderless table-white shadow p-3 mb-5 bg-white rounded" border="3" align="center" style="width: 60%">
-                @forelse ($data->pasien as $item)
-                    <tr>
-                        <td colspan="3" align="center"><b>
-                            PEMERINTAH KABUPATEN BANTUL <br>
-                            KARTU PASIEN<br>
-                            PUSKESMAS SEWON
-                        </b>
-                        </td>
-                      </tr>
-                    @foreach ($data->pasien as $item)
-                        <tr>
-                            <th style="width: 30%">NO RM</th>
-                            <th>:</th>
-                            <td>{{ $item->no_rm }}</td>
-                        </tr>
-                        <tr>
-                            <th>NIK</th>
-                            <th>:</th>
-                            <td>{{ $item->nik }}</td>
-                        </tr>
-                        <tr>
-                            <th>NAMA</th>
-                            <th>:</th>
-                            <td>{{ Auth::user()->full_name }}</td>
-                        </tr>
-                        <tr>
-                            <th>TGL LAHIR</th>
-                            <th>:</th>
-                            <td>{{ $item->tgl_lahir }}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>L/P</b></td>
-                        </tr>
-                        <tr>
-                            <th>ALAMAT</th>
-                            <th>:</th>
-                            <td>{{ $item->alamat }}</td>
-                        </tr>
-                    @endforeach
-                    <tr>
-                        <td colspan="3" align=" center"><b>KARTU INI HARUS DIBAWA TIAP BEROBAT</b></td>
-                    </tr>
-                    
-                </table>
-                <a class="btn btn-outline-info" href="{{ url('cetakKartu') }}" target="_blank" role="button"><i class="fas fa-print"></i> Cetak Kartu</a>
-                    @empty
-                    
-                        <p class="px-4 py-3 bg-info text-white" align="center" >
-                            <b>Kartu Berobat Belum Tersedia!</b>
-                        </p>
-                    
-                    @endforelse
-            </div> --}}
+					
+					
 				</div>
 			</div><!-- /.row -->
 		</div><!-- /.container-fluid -->

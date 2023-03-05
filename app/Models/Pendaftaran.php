@@ -29,4 +29,9 @@ class Pendaftaran extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function users()
+    {
+        return $this->hasOne(Users::class, 'id', 'id_user');
+    }
 }

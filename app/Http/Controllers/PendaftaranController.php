@@ -42,7 +42,7 @@ class PendaftaranController extends Controller
         $getPDF = Pendaftaran::where('id_user', $user)->get();
 
         $pdf = Pdf::loadView('pendaftaran/cetakPDF', ['cetakPDF' => $getPDF]);
-        $pdf->setPaper('A4', 'landscape');
+        $pdf->setPaper('A4', 'potrait');
         return $pdf->stream('kartu_pasien.pdf');
     }
 

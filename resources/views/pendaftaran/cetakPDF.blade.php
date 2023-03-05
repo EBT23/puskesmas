@@ -3,60 +3,40 @@
 @section('content') --}}
 <div class="content-header">
     <div class="container-fluid">
-        {{-- <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0">{{ $title }}</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">{{ $title }}</li>
-                </ol>
-            </div>
-            
-        </div> --}}
         <div class="form group">
-            <div class="card-body" align="center">
-                <table class="table bg-gradient-white table-borderless table-white shadow p-3 mb-5 bg-white rounded" border="1" align="center" style="width: 70%">
-                    <tr>
-                        <td colspan="3" align="center"><b>
-                            PEMERINTAH KABUPATEN BANTUL <br>
-                            KARTU PASIEN<br>
-                            PUSKESMAS SEWON
-                        </b>
-                        </td>
-                      </tr>
+            <div class="card-body row">
+                <span align="center" style="position: relative; z-index: 1; top: 0px;">
+                    <img src="assets/dist/img/kartu-1.jpg" alt="image" width="700px">
+                </span>
+                <br>
+                <div class="row" style="position: relative; top: -270px; z-index: 2;color: #000000; margin-left: 20px; ">
                     @foreach ($cetakPDF as $item)
-                        <tr>
-                            <th style="width: 30%" align="left">NO RM</th>
-                            <th style="width: 1%" align="left">:</th>
-                            <td>{{ $item->no_rm }}</td>
-                        </tr>
-                        <tr>
-                            <th style="width: 30%" align="left">NIK</th>
-                            <th style="width: 1%" align="left">:</th>
-                            <td>{{ $item->nik }}</td>
-                        </tr>
-                        <tr>
-                            <th style="width: 30%" align="left">NAMA</th>
-                            <th style="width: 1%" align="left">:</th>
-                            <td>{{ Auth::user()->full_name }}</td>
-                        </tr>
-                        <tr>
-                            <th style="width: 30%" align="left">TGL LAHIR</th>
-                            <th style="width: 1%" align="left">:</th>
-                            <td>{{ $item->tgl_lahir }}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>L/P</b></td>
-                        </tr>
-                        <tr>
-                            <th style="width: 30%" align="left">ALAMAT</th>
-                            <th style="width: 1%" align="left">:</th>
-                            <td>{{ $item->alamat }}</td>
-                        </tr>
+                    <span>
+                        <table style="  font-size: 18px;">
+                            <tr style=" padding: 10px;">
+                                <th style=" padding: 10px;">No RM</th>
+                                <td style=" padding: 10px;">:</td>
+                                <td style=" padding: 10px; width: 90%;">{{ $item->no_rm }}</td>
+                            </tr>
+                            <tr style=" padding: 10px;">
+                                <th style=" padding: 10px;">Nama</th>
+                                <td style=" padding: 10px;">:</td>
+                                <td style=" padding: 10px; width: 90%;">{{ Auth::user()->full_name }}</td>
+                            </tr>
+                            <tr style=" padding: 10px;">
+                                <th style=" padding: 10px;">NIK</th>
+                                <td style=" padding: 10px;">:</td>
+                                <td style=" padding: 10px; width: 90%;">{{ $item->nik }} </td>
+                            </tr>
+                            <tr style=" padding: 10px;">
+                                <th style=" padding: 10px;">Alamat</th>
+                                <td style=" padding: 10px;">:</td>
+                                <td style=" padding: 10px; width: 200%;">{{ $item->alamat }}</td>
+                            </tr>	
+                        </table>
+                    </span>
                     @endforeach
-                    <tr>
-                        <td colspan="3" align=" center"><b>KARTU INI HARUS DIBAWA TIAP BEROBAT</b></td>
-                    </tr>
-                </table>
+                </div>
             </div>
         </div>
     </div><!-- /.row -->
