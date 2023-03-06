@@ -26,8 +26,7 @@ class NoAntrianController extends Controller
     }
     public function add(Request $request)
     {
-        $antrian = DB::table('antrian')->where('id_user', Auth::user()->id)->where('id_poli', $request->id_poli)->orWhere('created_at', 'like', date('Y-m-d'))->first();
-        // dd($antrian);
+        $antrian = DB::table('antrian')->where('id_user', Auth::user()->id)->where('id_poli', $request->id_poli)->where('created_at', 'LIKE', '%' . date('Y-m-d') . '%')->first();
         $cek = DB::table('antrian')->where('id_poli', $request->id_poli)->where('created_at', date('Y-m-d'))->latest('antrian')->first();
         if ($antrian == true) {
             Alert::error('Gagal', 'Anda sudah Mendaftar di poli ini');

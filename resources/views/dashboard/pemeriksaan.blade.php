@@ -70,23 +70,23 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="id_penyakit">Data Penyakit</label>
-                                    <select class="form-control selectpicker" id="id_penyakit" name="id_penyakit[]"
+                                    <select class="form-control selectpicker" id="id_penyakit" name="penyakit[]"
                                         data-actions-box="true" data-virtual-scroll="false" data-live-search="true" multiple
                                         required>
 
                                         @foreach ($dataPenyakit as $dp)
-                                            <option value="{{ $dp->id }}">{{ $dp->nama_penyakit }}</option>
+                                            <option value="{{ $dp->nama_penyakit }}">{{ $dp->nama_penyakit }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class=" form-group">
                                     <label for="id_obat">Data Obat</label>
-                                    <select class="form-control selectpicker" id="id_obat" name="id_obat[]"
+                                    <select class="form-control selectpicker" id="id_obat" name="obat[]"
                                         data-actions-box="true" data-virtual-scroll="false" data-live-search="true" multiple
                                         required>
 
                                         @foreach ($dataObat as $do)
-                                            <option value="{{ $do->id }}">{{ $do->nama_obat }}</option>
+                                            <option value="{{ $do->nama_obat }}">{{ $do->nama_obat }}</option>
                                         @endforeach
                                     </select>
                                 </div>
