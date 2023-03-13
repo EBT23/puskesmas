@@ -108,7 +108,6 @@ class PemeriksaanController extends Controller
 
           $getPemeriksaan =
                DB::select('SELECT p.*, u.full_name, d.nama_dokter, a.antrian from pemeriksaan p left join users u on p.id_user=u.id left join dokter d on p.id_dokter=d.id left join antrian a on p.id_get_antrian=a.id where p.id = "' . $id . '"');
-
           $sheet = $spreadsheet->getActiveSheet();
           $sheet->setCellValue('A5', 'Nama Lengkap');
           $sheet->setCellValue('B5', 'Antrian');
@@ -117,9 +116,7 @@ class PemeriksaanController extends Controller
           $sheet->setCellValue('E5', 'Obat');
           $sheet->setCellValue('F5', 'Tanggal Pemeriksaan');
           $rows = 6;
-          // dd($offer_customer_data);
           foreach ($getPemeriksaan as $pemDetails) {
-               // dd(preg_replace('/[][{}""]+/', ' ', $pemDetails->penyakit));
                $sheet->setCellValue('A' . $rows, $pemDetails->full_name);
                $sheet->setCellValue('B' . $rows, $pemDetails->antrian);
                $sheet->setCellValue('C' . $rows, $pemDetails->nama_dokter);
@@ -143,7 +140,6 @@ class PemeriksaanController extends Controller
                }
           endfor;
           $spreadsheet->getActiveSheet()->calculateColumnWidths();
-          // dd($getName[0]);
           header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
           header('Content-Disposition: attachment;filename="Pemeriksaan_' . $getName[0]->full_name . '_' . date('Y-m-d') . '.xlsx"');
           header('Cache-Control: max-age=0');
