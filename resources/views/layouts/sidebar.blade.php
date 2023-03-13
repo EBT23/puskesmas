@@ -109,6 +109,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item ">
+                    <a href="{{ route('pemeriksaan.exportExcel') }}" class="nav-link">
+                        <i class="nav-icon fas fa-print"></i>
+                        <p>
+                            Export Excel
+                            {{-- <i class="right fas fa-angle-left"></i> --}}
+                        </p>
+                    </a>
+                </li>
                 @else
                 <li class="nav-item menu-open">
                     <a href="/kartuPasien" class="nav-link">

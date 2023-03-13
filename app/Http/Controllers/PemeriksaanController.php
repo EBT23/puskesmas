@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use PhpOffice\PhpSpreadsheet\Writer\Xls;
 use RealRashid\SweetAlert\Facades\Alert;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class PemeriksaanController extends Controller
 {
@@ -17,7 +21,7 @@ class PemeriksaanController extends Controller
           $dataKajian = DB::table('kajian_awal')->get();
           $dataPenyakit = DB::table('penyakit')->get();
           $dataObat = DB::table('obat')->get();
-          $dataTujuan = DB::table('tujuan_pemeriksaan')->get();
+          $dataTujuan = DB::table('pemeriksaan')->get();
           $dataAntrian = DB::table('antrian')->get();
           return view('dashboard.pemeriksaan', [
                'dataPasien' => $dataPasien,
@@ -59,7 +63,7 @@ class PemeriksaanController extends Controller
      }
 
      function pemeriksaanPost(Request $request)
-     {    
+     {
           $data = [
                'id_user' => $request->id_user,
                'id_tujuan' => $request->id_tujuan,
@@ -74,5 +78,77 @@ class PemeriksaanController extends Controller
           DB::table('pemeriksaan')->insert($data);
           Alert::success('Success', 'Pemeriksaan berhasil ditambah!!');
           return redirect()->route('pemeriksaan');
+     }
+     public function exportExcel()
+     {
+          $data['title'] = 'Export Excel';
+          $pemeriksaan = DB::select('SELECT p.*, u.full_name, d.nama_dokter, a.antrian from pemeriksaan p left join users u on p.id_user=u.id left join dokter d on p.id_dokter=d.id left join antrian a on p.id_get_antrian=a.id');
+          // dd($dataTujuan);
+          return view('dashboard.exportExcel', [
+
+               'pemeriksaan' => $pemeriksaan,
+
+          ], $data);
+     }
+     public function cetakExcelRow($id)
+     {
+          $getName =
+               DB::select('SELECT p.*, u.full_name, d.nama_dokter, a.antrian from pemeriksaan p left join users u on p.id_user=u.id left join dokter d on p.id_dokter=d.id left join antrian a on p.id_get_antrian=a.id where p.id = "' . $id . '"');
+          $spreadsheet = new Spreadsheet();
+          $spreadsheet->setActiveSheetIndex(0);
+          $spreadsheet->getActiveSheet()->setTitle('Pemeriksaan');
+          $spreadsheet->getProperties()
+               ->setCreator("'" . Auth::user()->username . "'")
+               ->setLastModifiedBy("'" . Auth::user()->username . "'")
+               ->setTitle("'" . Auth::user()->username . "'")
+               ->setSubject("'" . Auth::user()->username . "'");
+          $spreadsheet->setActiveSheetIndex(0)->setCellValue('A1', 'Puskesmas')
+          ->setCellValue('A2', 'Pemeriksaan: ' . $getName[0]->full_name . '')
+               ->setCellValue('A3', 'Dicetak: ' . date('Y-m-d') . '');
+
+          $getPemeriksaan =
+               DB::select('SELECT p.*, u.full_name, d.nama_dokter, a.antrian from pemeriksaan p left join users u on p.id_user=u.id left join dokter d on p.id_dokter=d.id left join antrian a on p.id_get_antrian=a.id where p.id = "' . $id . '"');
+
+          $sheet = $spreadsheet->getActiveSheet();
+          $sheet->setCellValue('A5', 'Nama Lengkap');
+          $sheet->setCellValue('B5', 'Antrian');
+          $sheet->setCellValue('C5', 'Dokter');
+          $sheet->setCellValue('D5', 'Penyakit');
+          $sheet->setCellValue('E5', 'Obat');
+          $sheet->setCellValue('F5', 'Tanggal Pemeriksaan');
+          $rows = 6;
+          // dd($offer_customer_data);
+          foreach ($getPemeriksaan as $pemDetails) {
+               // dd(preg_replace('/[][{}""]+/', ' ', $pemDetails->penyakit));
+               $sheet->setCellValue('A' . $rows, $pemDetails->full_name);
+               $sheet->setCellValue('B' . $rows, $pemDetails->antrian);
+               $sheet->setCellValue('C' . $rows, $pemDetails->nama_dokter);
+               $sheet->setCellValue('D' . $rows, preg_replace('/[][{}""]+/', ' ', $pemDetails->penyakit));
+               $sheet->setCellValue('E' . $rows, preg_replace('/[][{}""]+/', ' ', $pemDetails->obat));
+               $sheet->setCellValue('F' . $rows, $pemDetails->tgl_diperiksa);
+               $rows++;
+          }
+          $Sheet = $spreadsheet->getActiveSheet();
+          $lABC1 = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+          $lABC2 = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+
+          for (
+               $I = 0;
+               $I < count($lABC1);
+               $I++
+          ) :
+               $Sheet->getColumnDimension($lABC1[$I])->setAutoSize(true);
+               for ($J = 0; $J < 6; $J++) {
+                    $Sheet->getColumnDimension($lABC2[$J] . $lABC1[$I])->setAutoSize(true);
+               }
+          endfor;
+          $spreadsheet->getActiveSheet()->calculateColumnWidths();
+          // dd($getName[0]);
+          header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+          header('Content-Disposition: attachment;filename="Pemeriksaan_' . $getName[0]->full_name . '_' . date('Y-m-d') . '.xlsx"');
+          header('Cache-Control: max-age=0');
+
+          $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
+          $writer->save('php://output');
      }
 }

@@ -82,6 +82,9 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('addKajianAwal/{id}', [PemeriksaanController::class, 'addKajianAwal'])->name('pemeriksaan.addKajianAwal');
 	Route::post('addTujuanPemeriksaan/{id}', [PemeriksaanController::class, 'addTujuanPemeriksaan'])->name('pemeriksaan.addTujuanPemeriksaan');
 	Route::post('addAntrian/{id}', [PemeriksaanController::class, 'addAntrian'])->name('pemeriksaan.addAntrian');
+	##Excel
+	Route::get('exportExcel', [PemeriksaanController::class, 'exportExcel'])->name('pemeriksaan.exportExcel');
+	Route::get('cetakExcelRow/{id}', [PemeriksaanController::class, 'cetakExcelRow'])->name('pemeriksaan.cetakExcelRow');
 
 	//role
 	Route::get('role', [DashboardController::class, 'role'])->name('role');
