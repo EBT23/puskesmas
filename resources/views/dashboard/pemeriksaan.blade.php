@@ -37,13 +37,13 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="id_tujuan">Tujuan Pemeriksaan</label>
                                     <select class="form-control select" id="id_tujuan" name="id_tujuan">
                                         <option>-pilih-</option>
 
                                     </select>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label for="id_get_antrian">Data Antrian</label>
                                     <select class="form-control" id="id_get_antrian" name="id_get_antrian">

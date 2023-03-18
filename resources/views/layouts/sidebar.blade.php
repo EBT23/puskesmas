@@ -118,6 +118,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('getAntrian') }}" class="nav-link">
+                        <i class="nav-icon fas fa-x-ray"></i>
+                        <p>
+                            Antrian
+                        </p>
+                    </a>
+                </li>
                 @else
                 <li class="nav-item menu-open">
                     <a href="/kartuPasien" class="nav-link">

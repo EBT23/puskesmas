@@ -85,6 +85,8 @@ Route::middleware(['auth'])->group(function () {
 	##Excel
 	Route::get('exportExcel', [PemeriksaanController::class, 'exportExcel'])->name('pemeriksaan.exportExcel');
 	Route::get('cetakExcelRow/{id}', [PemeriksaanController::class, 'cetakExcelRow'])->name('pemeriksaan.cetakExcelRow');
+	Route::get('filterExcel', [PemeriksaanController::class, 'filterExcel'])->name('filter.excel');
+	Route::get('cetakAll', [PemeriksaanController::class, 'cetakAll'])->name('cetakAll');
 
 	//role
 	Route::get('role', [DashboardController::class, 'role'])->name('role');
@@ -106,6 +108,12 @@ Route::middleware(['auth'])->group(function () {
 
 	#Dani
 	Route::get('noAntrian', [NoAntrianController::class, 'view'])->name('noAntrian');
+	Route::get('getAntrian', [NoAntrianController::class, 'viewAdmin'])->name('getAntrian');
+	Route::get('listAntrian/{id}', [NoAntrianController::class, 'listAntrian'])->name('listAntrian');
+	Route::get('doneAntrian/{id}', [NoAntrianController::class, 'doneAntrian'])->name('doneAntrian');
+	Route::get('backAntrian/{id}', [NoAntrianController::class, 'backAntrian'])->name('backAntrian');
+	Route::get('load_data', [NoAntrianController::class, 'load_data'])->name('load_data');
+	Route::get('load_dataNoAktif', [NoAntrianController::class, 'load_dataNoAktif'])->name('load_dataNoAktif');
 
 	Route::post('noAntrian/add', [NoAntrianController::class, 'add'])->name('noAntrian.add');
 	Route::get('cetakAntrian/{id}', [NoAntrianController::class, 'cetakAntrian'])->name('noAntrian.cetakAntrian');

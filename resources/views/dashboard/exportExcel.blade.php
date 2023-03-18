@@ -3,6 +3,32 @@
 @section('content')
     @include('sweetalert::alert')
     <div class="content-header">
+        <form method="GET" action="{{ route('filter.excel') }}">
+            @csrf
+            <div class="card">
+                <div class="row" style="margin: 10px;">
+
+                    <div class="col-md-3">
+                        <label for="0">Tanggal Awal</label>
+                        <input type="date" id="tanggal_awal" name="tanggal_awal" value="{{ Request::old('tanggal_awal') }}"
+                            class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">Tanggal akhir</label>
+                        <input type="date" id="tanggal_akhir" name="tanggal_akhir" value="{{ old('tanggal_akhir') }}"
+                            class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        {{-- <button type="submit" class="btn btn-outline-primary" style="margin-top: 31px;">Filter</button> --}}
+                        @if ($pemeriksaan == true)
+                            <a onclick="cetakAll()" class="btn btn-outline-success" style="margin-top: 31px;">Cetak</a>
+                        @endif
+
+                    </div>
+
+                </div>
+            </div>
+        </form>
         <div class="container-fluid">
             <div class="card shadow">
                 <div class="card-body">
@@ -40,10 +66,10 @@
                                     </td>
                                     <td>{{ $dp->tgl_diperiksa }}</td>
                                     <td class="d-flex">
-										<a href="cetakExcelRow/{{$dp->id}}" type="button" class="btn btn-outline-success mr-2" 
-											><i class="fas fa-print"></i></a>
-										
-									</td>
+                                        <a href="cetakExcelRow/{{ $dp->id }}" type="button"
+                                            class="btn btn-outline-success mr-2"><i class="fas fa-print"></i></a>
+
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -53,5 +79,28 @@
             </div>
         </div>
     </div>
+    <script>
+        function cetakAll() {
+            var tanggal_awal = $("#tanggal_awal").val();
+            var tanggal_akhir = $("#tanggal_akhir").val();
+            $.ajax({
+                type: "GET",
+                cache: false,
+                dataType: 'json',
+                url: "{{ url('cetakAll') }}/",
+                data: {
+                    tanggal_awal: tanggal_awal,
+                    tanggal_akhir: tanggal_akhir
+                },
+
+                success: function(response) {
+                    // window.open(this.url, '_blank');
+                    var win = window.open("", "_blank");
+                    win.location.href = response.file;
+                }
+            });
+            return false;
+        }
+    </script>
     <!-- /.content-header -->
 @endsection
