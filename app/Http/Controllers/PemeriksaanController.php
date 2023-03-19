@@ -68,7 +68,7 @@ class PemeriksaanController extends Controller
      {
           $data = [
                'id_user' => $request->id_user,
-               
+
                'id_get_antrian' => $request->id_get_antrian,
                'id_dokter' => $request->id_dokter,
                'penyakit' => json_encode($request->penyakit),
@@ -107,6 +107,7 @@ class PemeriksaanController extends Controller
      }
      public function cetakAll(Request $request)
      {
+
           $spreadsheet = new Spreadsheet();
           $spreadsheet->setActiveSheetIndex(0);
           $spreadsheet->getActiveSheet()->setTitle('Pemeriksaan');
@@ -116,7 +117,7 @@ class PemeriksaanController extends Controller
                ->setTitle("'" . Auth::user()->username . "'")
                ->setSubject("'" . Auth::user()->username . "'");
           $spreadsheet->setActiveSheetIndex(0)->setCellValue('A1', 'Puskesmas')
-          ->setCellValue('A2', 'Pemeriksaan: Dari Tanggal ' . $request->tanggal_awal . ' Sampai Tanggal ' . $request->tanggal_akhir . '')
+               ->setCellValue('A2', 'Pemeriksaan: Dari Tanggal ' . $request->tanggal_awal . ' Sampai Tanggal ' . $request->tanggal_akhir . '')
                ->setCellValue('A3', 'Dicetak: ' . date('Y-m-d') . '');
 
           $getPemeriksaan = DB::select('SELECT p.*, u.full_name, d.nama_dokter, a.antrian from pemeriksaan p left join users u on p.id_user=u.id left join dokter d on p.id_dokter=d.id left join antrian a on p.id_get_antrian=a.id where p.tgl_diperiksa BETWEEN "' .  $request->tanggal_awal . '" and "' . $request->tanggal_akhir . '"');
@@ -186,7 +187,7 @@ class PemeriksaanController extends Controller
                ->setTitle("'" . Auth::user()->username . "'")
                ->setSubject("'" . Auth::user()->username . "'");
           $spreadsheet->setActiveSheetIndex(0)->setCellValue('A1', 'Puskesmas')
-          ->setCellValue('A2', 'Pemeriksaan: ' . $getName[0]->full_name . '')
+               ->setCellValue('A2', 'Pemeriksaan: ' . $getName[0]->full_name . '')
                ->setCellValue('A3', 'Dicetak: ' . date('Y-m-d') . '');
 
           $getPemeriksaan =

@@ -83,23 +83,28 @@
         function cetakAll() {
             var tanggal_awal = $("#tanggal_awal").val();
             var tanggal_akhir = $("#tanggal_akhir").val();
-            $.ajax({
-                type: "GET",
-                cache: false,
-                dataType: 'json',
-                url: "{{ url('cetakAll') }}/",
-                data: {
-                    tanggal_awal: tanggal_awal,
-                    tanggal_akhir: tanggal_akhir
-                },
+            console.log(tanggal_awal);
+            if (tanggal_awal == "" || tanggal_akhir == "") {
+                alert("Masukan Tanggal Awal dan Tanggal Akhir");
+            } else {
+                $.ajax({
+                    type: "GET",
+                    cache: false,
+                    dataType: 'json',
+                    url: "{{ url('cetakAll') }}/",
+                    data: {
+                        tanggal_awal: tanggal_awal,
+                        tanggal_akhir: tanggal_akhir
+                    },
 
-                success: function(response) {
-                    // window.open(this.url, '_blank');
-                    var win = window.open("", "_blank");
-                    win.location.href = response.file;
-                }
-            });
-            return false;
+                    success: function(response) {
+                        // window.open(this.url, '_blank');
+                        var win = window.open("", "_blank");
+                        win.location.href = response.file;
+                    }
+                });
+                return false;
+            }
         }
     </script>
     <!-- /.content-header -->

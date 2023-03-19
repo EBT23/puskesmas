@@ -2,8 +2,11 @@
 
 @section('content')
     @include('sweetalert::alert')
-    <div class="content-header">
+    <div class="content-header" id="ref">
         <h2>Daftar Antrian Aktif</h2>
+        <button class="item_done btn btn-outline-primary mr-2 refresh"
+            style="margin-left: 1050px;
+margin-top: -63px;">Refresh</button>
         <div class="container-fluid">
             <div class="card shadow">
 
@@ -34,6 +37,7 @@
     </div>
     <div class="content-header">
         <h2>Daftar Antrian Selesai</h2>
+
         <div class="container-fluid">
             <div class="card shadow">
 
@@ -85,6 +89,10 @@
         $(document).ready(function() {
             tampil_NoAktif();
             tampil_Aktif();
+            $('#ref').on('click', '.refresh', function() {
+                tampil_NoAktif();
+                tampil_Aktif();
+            });
 
             function tampil_Aktif() {
                 var poli_code = $('#poli_code').val();
