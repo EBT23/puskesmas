@@ -11,7 +11,9 @@ class DashboardController extends Controller
 {
 	public function index()
 	{
-		return view('dashboard.index');
+		$dokter = DB::table('dokter')->get();
+		$pemeriksaan = DB::table('pemeriksaan')->get();
+		return view('dashboard.index',['dokter' => $dokter,'pemeriksaan' => $pemeriksaan]);
 	}
 
 	public function role()
