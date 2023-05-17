@@ -56,6 +56,7 @@ class NoAntrianController extends Controller
             return back();
         }
     }
+    
     public function viewAdmin()
     {
         $data['title'] = 'Nomor Antrian';
@@ -110,4 +111,5 @@ class NoAntrianController extends Controller
         echo json_encode($antrianNo);
         // return DataTables::of($antrianNo)->toJson();
     }
+    
 }

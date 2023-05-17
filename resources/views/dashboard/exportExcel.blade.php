@@ -21,7 +21,9 @@
                     <div class="col-md-3">
                         {{-- <button type="submit" class="btn btn-outline-primary" style="margin-top: 31px;">Filter</button> --}}
                         @if ($pemeriksaan == true)
-                            <a onclick="cetakAll()" class="btn btn-outline-success" style="margin-top: 31px;">Cetak</a>
+                            <a onclick="cetakAll()" class="btn btn-outline-success" style="margin-top: 31px;">Excel</a>
+                            <a onclick="cetakAllPdf()"  class="btn btn-outline-danger" id="pdf"
+                                style="margin-top: 31px;">Pdf</a>
                         @endif
 
                     </div>
@@ -106,6 +108,41 @@
                 return false;
             }
         }
+
+        function cetakAllPdf() {
+            var tanggal_awal = $("#tanggal_awal").val();
+            var tanggal_akhir = $("#tanggal_akhir").val();
+            // console.log(tanggal_awal);
+
+            if (tanggal_awal == "" || tanggal_akhir == "") {
+                alert("Masukan Tanggal Awal dan Tanggal Akhir");
+            } else {
+                $.ajax({
+                    type: "GET",
+                    cache: false,
+                    dataType: 'json',
+                    url: "{{ url('cetakAllPdf') }}/",
+                    data: {
+                        tanggal_awal: tanggal_awal,
+                        tanggal_akhir: tanggal_akhir
+                    },
+                    success: function(data) {
+                        // console.log(data);
+                        // var redirectWindow = window.open('/cetakAllPdf', '_blank');
+                        // redirectWindow.location;
+                    }
+
+                });
+
+                return false;
+
+            }
+
+        }
+        // $('#pdf').click(function() {
+
+        // });
     </script>
+
     <!-- /.content-header -->
 @endsection

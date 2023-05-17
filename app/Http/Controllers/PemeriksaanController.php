@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use NunoMaduro\Collision\Writer;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use Illuminate\Support\Facades\Redirect;
 use PhpOffice\PhpSpreadsheet\Writer\Xls;
 use RealRashid\SweetAlert\Facades\Alert;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -231,4 +236,40 @@ class PemeriksaanController extends Controller
           $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
           $writer->save('php://output');
      }
+     public function cetakAllPdf(Request $request)
+     {
+          // dd($request->all());
+          $pemeriksaan = DB::select('SELECT p.*, u.full_name, d.nama_dokter, a.antrian from pemeriksaan p left join users u on p.id_user=u.id left join dokter d on p.id_dokter=d.id left join antrian a on p.id_get_antrian=a.id where p.tgl_diperiksa BETWEEN "' .  $request->tanggal_awal . '" and "' . $request->tanggal_akhir . '"');
+          // dd($pemeriksaan);
+          // $pdf = PDF::loadview('dashboard.exportPdf', ['pemeriksaan' => $pemeriksaan]);
+          // // return Pdf::loadFile(public_path() . '/')->save('/path-to/my_stored_file.pdf')->stream('download.pdf');
+          // return view('dashboard.exportPdf', ['pemeriksaan' => $pemeriksaan]);
+          // $url = "/cetakAllPdf";
+          // return Redirect::away($url);
+          $data = [
+
+               'title' => 'Welcome to Puskesmas',
+
+               'date' => date('m/d/Y'),
+
+               'pemeriksaan' => $pemeriksaan
+
+          ];
+
+
+
+          $pdf = PDF::loadView('dashboard.exportPdf', $data);
+          return $pdf->download('itsolutionstuff.pdf');
+          // $pdf = PDF::loadview('exportPdf', ['pemeriksaan' => $pemeriksaan]);
+          // return $pdf->stream();
+          // return View::make('dashboard.exportPdf')->with('pemeriksaan', $pemeriksaan);
+     }
+     // public function downloadPdf()
+     // {
+     //      return view('dashboard.exportPdf', [
+
+     //           'pemeriksaan' => $pemeriksaan,
+
+     //      ], $data);
+     // }
 }

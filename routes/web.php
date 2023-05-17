@@ -87,6 +87,8 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('cetakExcelRow/{id}', [PemeriksaanController::class, 'cetakExcelRow'])->name('pemeriksaan.cetakExcelRow');
 	Route::get('filterExcel', [PemeriksaanController::class, 'filterExcel'])->name('filter.excel');
 	Route::get('cetakAll', [PemeriksaanController::class, 'cetakAll'])->name('cetakAll');
+	Route::get('cetakAllPdf', [PemeriksaanController::class, 'cetakAllPdf'])->name('cetakAllPdf');
+	Route::get('downloadPdf', [PemeriksaanController::class, 'downloadPdf'])->name('downloadPdf');
 
 	//role
 	Route::get('role', [DashboardController::class, 'role'])->name('role');
