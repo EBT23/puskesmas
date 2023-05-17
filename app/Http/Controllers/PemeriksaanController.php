@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 use PhpOffice\PhpSpreadsheet\Writer\Xls;
 use RealRashid\SweetAlert\Facades\Alert;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -255,11 +256,23 @@ class PemeriksaanController extends Controller
                'pemeriksaan' => $pemeriksaan
 
           ];
-
-
-
           $pdf = PDF::loadView('dashboard.exportPdf', $data);
-          return $pdf->download('itsolutionstuff.pdf');
+
+          $fileName =  'data.pdf';
+          $pdf->save(public_path() . '/storage/pdf/' . $fileName);
+
+          $pdf = public_path('/storage/pdf/' . $fileName);
+
+          // return Response::json($pdf);
+          return response()->json([
+               'status' => 'ok',
+               'data' => $pdf
+          ]);
+          // return response()->download($pdf);
+
+
+          // $pdf = PDF::loadView('dashboard.exportPdf', $data);
+          // return $pdf->download('itsolutionstuff.pdf');
           // $pdf = PDF::loadview('exportPdf', ['pemeriksaan' => $pemeriksaan]);
           // return $pdf->stream();
           // return View::make('dashboard.exportPdf')->with('pemeriksaan', $pemeriksaan);
