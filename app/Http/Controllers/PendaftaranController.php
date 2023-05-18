@@ -48,8 +48,12 @@ class PendaftaranController extends Controller
 
     public function kajian_awal()
     {
-
         $data['title'] = 'kajian awal';
         return view('pendaftaran.kajian_awal', $data);
+    }
+    public function pendaftarExport()
+    {
+        $data['title'] = 'Pendaftar';
+        return view('dashboard.pendaftarExport', $data);
     }
 }

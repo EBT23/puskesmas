@@ -110,6 +110,7 @@ Route::middleware(['auth'])->group(function () {
 
 	#Dani
 	Route::get('noAntrian', [NoAntrianController::class, 'view'])->name('noAntrian');
+
 	Route::get('getAntrian', [NoAntrianController::class, 'viewAdmin'])->name('getAntrian');
 	Route::get('listAntrian/{id}', [NoAntrianController::class, 'listAntrian'])->name('listAntrian');
 	Route::get('doneAntrian/{id}', [NoAntrianController::class, 'doneAntrian'])->name('doneAntrian');
@@ -120,6 +121,8 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('noAntrian/add', [NoAntrianController::class, 'add'])->name('noAntrian.add');
 	Route::get('cetakAntrian/{id}', [NoAntrianController::class, 'cetakAntrian'])->name('noAntrian.cetakAntrian');
 
+	#Pendaftar Export
+	Route::get('pendaftarExport', [PendaftaranController::class, 'pendaftarExport'])->name('pendaftarExport');
 	##Logout Dani
 	Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });

@@ -118,6 +118,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item ">
+                    <a href="{{ route('pendaftarExport') }}" class="nav-link">
+                        <i class="nav-icon fas fa-print"></i>
+                        <p>
+                            Pendaftar
+                            {{-- <i class="right fas fa-angle-left"></i> --}}
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="{{ route('getAntrian') }}" class="nav-link">
                         <i class="nav-icon fas fa-x-ray"></i>
@@ -138,47 +147,47 @@
                     {{-- <ul class="nav nav-treeview">
                         <li class="nav-item ">
                             <a href="{{ route('pendaftaran') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Form Registrasi</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/kartuPasien" class="nav-link ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Kartu Pasien</p>
-                            </a>
-                        </li>
-                    </ul> --}}
-                </li>
-                <li class="nav-item menu-open">
-                    <a href="{{ route('noAntrian') }}" class="nav-link">
-                        <i class="nav-icon fas fa-medkit"></i>
-                        <p>
-                            Layanan
-                            {{-- <i class="right fas fa-angle-left"></i> --}}
-                        </p>
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Form Registrasi</p>
                     </a>
                 </li>
-                {{-- <li class="nav-item menu-open">
+                <li class="nav-item">
+                    <a href="/kartuPasien" class="nav-link ">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Kartu Pasien</p>
+                    </a>
+                </li>
+            </ul> --}}
+            </li>
+            <li class="nav-item menu-open">
+                <a href="{{ route('noAntrian') }}" class="nav-link">
+                    <i class="nav-icon fas fa-medkit"></i>
+                    <p>
+                        Layanan
+                        {{-- <i class="right fas fa-angle-left"></i> --}}
+                    </p>
+                </a>
+            </li>
+            {{-- <li class="nav-item menu-open">
                     <a href="{{ route('kajian_awal') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Form Kajian Awal
-                            {{-- <i class="right fas fa-angle-left"></i> --}}
-                        </p>
-                    </a>
-                </li>
-                @endif
-                
-                {{-- <li class="nav-item menu-open">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+                Form Kajian Awal
+                {{-- <i class="right fas fa-angle-left"></i> --}}
+            </p>
+            </a>
+            </li>
+            @endif
+
+            {{-- <li class="nav-item menu-open">
                     <a href="{{ route('logout') }}" class="nav-link">
-                        <i class='nav-icon fas fa-sign-out-alt'></i>
-                        <p>
-                            Logout
-                         
-                        </p>
-                    </a>
-                </li> --}}
+            <i class='nav-icon fas fa-sign-out-alt'></i>
+            <p>
+                Logout
+
+            </p>
+            </a>
+            </li> --}}
             </ul>
             <div class="user-panel mt-2 pb-3 mb-3 d-flex">
             </div>
