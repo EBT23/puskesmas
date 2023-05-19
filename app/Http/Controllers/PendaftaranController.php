@@ -193,17 +193,9 @@ class PendaftaranController extends Controller
             'pendaftaran' => $pendaftaran
         ];
         $pdf = PDF::loadView('dashboard.exportPdfPendaftaran', $data);
-
         $fileName =  'pendaftaran.pdf';
         $pdf->save(public_path() . '/storage/pdf/' . $fileName);
-
         $pdf = public_path() . '/storage/pdf/' . $fileName;
-
-        // return Response::json($pdf);
-        // return response()->json([
-        //      'status' => 'ok',
-        //      'data' => $pdf
-        // ]);
         return response()->download($pdf);
     }
 }
