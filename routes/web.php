@@ -123,6 +123,9 @@ Route::middleware(['auth'])->group(function () {
 
 	#Pendaftar Export
 	Route::get('pendaftarExport', [PendaftaranController::class, 'pendaftarExport'])->name('pendaftarExport');
+	Route::get('/pendaftarExport/cetakAll', [PendaftaranController::class, 'cetakAll'])->name('pendaftarExport.cetakAll');
+	Route::get('/pendaftarExport/cetakExcelRow/{id}', [PendaftaranController::class, 'cetakExcelRow'])->name('pendaftarExport.cetakExcelRow');
+	Route::get('/pendaftarExport/cetakAllPdf', [PendaftaranController::class, 'cetakAllPdf'])->name('pendaftarExport.cetakAllPdf');
 	##Logout Dani
 	Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });

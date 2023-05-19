@@ -261,14 +261,14 @@ class PemeriksaanController extends Controller
           $fileName =  'data.pdf';
           $pdf->save(public_path() . '/storage/pdf/' . $fileName);
 
-          $pdf = public_path('/storage/pdf/' . $fileName);
+          $pdf = public_path() . '/storage/pdf/' . $fileName;
 
           // return Response::json($pdf);
-          return response()->json([
-               'status' => 'ok',
-               'data' => $pdf
-          ]);
-          // return response()->download($pdf);
+          // return response()->json([
+          //      'status' => 'ok',
+          //      'data' => $pdf
+          // ]);
+          return response()->download($pdf);
 
 
           // $pdf = PDF::loadView('dashboard.exportPdf', $data);
