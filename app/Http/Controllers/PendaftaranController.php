@@ -186,14 +186,12 @@ class PendaftaranController extends Controller
     }
     public function cetakAllPdf(Request $request)
     {
-        // dd($request->tanggal_awal);
         $pendaftaran = DB::select('select p.*, u.full_name from pendaftaran p left join users u on p.id_user=u.id where p.created_at BETWEEN "' .  $request->tanggal_awal . '" and "' . $request->tanggal_akhir . '"');
         $data = [
             'title' => 'Welcome to Puskesmas',
             'date' => date('m/d/Y'),
             'pendaftaran' => $pendaftaran
         ];
-        // dd($pendaftaran);
         $pdf = PDF::loadView('dashboard.exportPdfPendaftaran', $data);
 
         $fileName =  'pendaftaran.pdf';
