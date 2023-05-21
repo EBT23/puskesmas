@@ -29,7 +29,7 @@ use App\Http\Controllers\UserFormController;
 */
 
 Route::get('/', function () {
-	return view('auth.login');
+    return view('auth.login');
 });
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -44,90 +44,90 @@ Route::get('reset-password/{token}', [AuthController::class, 'showResetPasswordF
 Route::post('reset-password', [AuthController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 Route::middleware(['auth'])->group(function () {
-	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-	##Agus
-	Route::get('/pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran');
-	Route::post('pendaftaran', [PendaftaranController::class, 'pendaftaran_action'])->name('pendaftaran.action');
+    ##Agus
+    Route::get('/pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran');
+    Route::post('pendaftaran', [PendaftaranController::class, 'pendaftaran_action'])->name('pendaftaran.action');
 
-	#Hamdi
-	Route::get('/kajianawal', [PendaftaranController::class, 'kajian_awal'])->name('kajian_awal');
-	Route::post('/kajianawal', [PendaftaranController::class, 'kajianawalPost'])->name('kajian_awal.post');
+    #Hamdi
+    Route::get('/kajianawal', [PendaftaranController::class, 'kajian_awal'])->name('kajian_awal');
+    Route::post('/kajianawal', [PendaftaranController::class, 'kajianawalPost'])->name('kajian_awal.post');
 
-	//kelola jadwal dokter
-	Route::get('jadwal', [JadwalController::class, 'jadwal'])->name('jadwal');
-	Route::post('jadwal', [JadwalController::class, 'jadwalPost'])->name('jadwal.post');
-	Route::post('jadwal/{id}', [JadwalController::class, 'editPost'])->name('editJadwal');
-	Route::delete('hapusjadwal/{id}', [JadwalController::class, 'hapusJadwal'])->name('hapusJadwal');
+    //kelola jadwal dokter
+    Route::get('jadwal', [JadwalController::class, 'jadwal'])->name('jadwal');
+    Route::post('jadwal', [JadwalController::class, 'jadwalPost'])->name('jadwal.post');
+    Route::post('jadwal/{id}', [JadwalController::class, 'editPost'])->name('editJadwal');
+    Route::delete('hapusjadwal/{id}', [JadwalController::class, 'hapusJadwal'])->name('hapusJadwal');
 
-	//kelola penyakit
-	Route::get('penyakit', [PenyakitController::class, 'penyakit'])->name('penyakit');
-	Route::post('penyakit', [PenyakitController::class, 'penyakitPost'])->name('penyakit.post');
-	Route::post('penyakit/{id}', [PenyakitController::class, 'editPenyakit'])->name('editPenyakit');
-	Route::delete('hapuspenyakit/{id}', [PenyakitController::class, 'hapusPenyakit'])->name('hapusPenyakit');
+    //kelola penyakit
+    Route::get('penyakit', [PenyakitController::class, 'penyakit'])->name('penyakit');
+    Route::post('penyakit', [PenyakitController::class, 'penyakitPost'])->name('penyakit.post');
+    Route::post('penyakit/{id}', [PenyakitController::class, 'editPenyakit'])->name('editPenyakit');
+    Route::delete('hapuspenyakit/{id}', [PenyakitController::class, 'hapusPenyakit'])->name('hapusPenyakit');
 
-	// kelola obat
-	Route::get('obat', [ObatController::class, 'obat'])->name('obat');
-	Route::post('obat', [ObatController::class, 'obatPost'])->name('obat.post');
-	Route::post('obat/{id}', [ObatController::class, 'editObat'])->name('editObat');
-	Route::delete('hapusobat/{id}', [ObatController::class, 'hapusObat'])->name('hapusObat');
+    // kelola obat
+    Route::get('obat', [ObatController::class, 'obat'])->name('obat');
+    Route::post('obat', [ObatController::class, 'obatPost'])->name('obat.post');
+    Route::post('obat/{id}', [ObatController::class, 'editObat'])->name('editObat');
+    Route::delete('hapusobat/{id}', [ObatController::class, 'hapusObat'])->name('hapusObat');
 
-	//admin profil
-	Route::get('profil', [AdminprofilController::class, 'profil'])->name('profilAdmin');
-	Route::put('profil', [AdminprofilController::class, 'editProfil'])->name('editProfilAdmin');
+    //admin profil
+    Route::get('profil', [AdminprofilController::class, 'profil'])->name('profilAdmin');
+    Route::put('profil', [AdminprofilController::class, 'editProfil'])->name('editProfilAdmin');
 
-	//input pemeriksaan oleh admin
-	Route::get('pemeriksaan', [PemeriksaanController::class, 'pemeriksaan'])->name('pemeriksaan');
-	Route::post('pemeriksaan', [PemeriksaanController::class, 'pemeriksaanPost'])->name('pemeriksaan.Post');
-	Route::post('addKajianAwal/{id}', [PemeriksaanController::class, 'addKajianAwal'])->name('pemeriksaan.addKajianAwal');
-	Route::post('addTujuanPemeriksaan/{id}', [PemeriksaanController::class, 'addTujuanPemeriksaan'])->name('pemeriksaan.addTujuanPemeriksaan');
-	Route::post('addAntrian/{id}', [PemeriksaanController::class, 'addAntrian'])->name('pemeriksaan.addAntrian');
-	##Excel
-	Route::get('exportExcel', [PemeriksaanController::class, 'exportExcel'])->name('pemeriksaan.exportExcel');
-	Route::get('cetakExcelRow/{id}', [PemeriksaanController::class, 'cetakExcelRow'])->name('pemeriksaan.cetakExcelRow');
-	Route::get('filterExcel', [PemeriksaanController::class, 'filterExcel'])->name('filter.excel');
-	Route::get('cetakAll', [PemeriksaanController::class, 'cetakAll'])->name('cetakAll');
-	Route::get('cetakAllPdf', [PemeriksaanController::class, 'cetakAllPdf'])->name('cetakAllPdf');
-	Route::get('downloadPdf', [PemeriksaanController::class, 'downloadPdf'])->name('downloadPdf');
+    //input pemeriksaan oleh admin
+    Route::get('pemeriksaan', [PemeriksaanController::class, 'pemeriksaan'])->name('pemeriksaan');
+    Route::post('pemeriksaan', [PemeriksaanController::class, 'pemeriksaanPost'])->name('pemeriksaan.Post');
+    Route::post('addKajianAwal/{id}', [PemeriksaanController::class, 'addKajianAwal'])->name('pemeriksaan.addKajianAwal');
+    Route::post('addTujuanPemeriksaan/{id}', [PemeriksaanController::class, 'addTujuanPemeriksaan'])->name('pemeriksaan.addTujuanPemeriksaan');
+    Route::post('addAntrian/{id}', [PemeriksaanController::class, 'addAntrian'])->name('pemeriksaan.addAntrian');
+    ##Excel
+    Route::get('exportExcel', [PemeriksaanController::class, 'exportExcel'])->name('pemeriksaan.exportExcel');
+    Route::get('cetakExcelRow/{id}', [PemeriksaanController::class, 'cetakExcelRow'])->name('pemeriksaan.cetakExcelRow');
+    Route::get('filterExcel', [PemeriksaanController::class, 'filterExcel'])->name('filter.excel');
+    Route::get('cetakAll', [PemeriksaanController::class, 'cetakAll'])->name('cetakAll');
+    Route::get('cetakAllPdf', [PemeriksaanController::class, 'cetakAllPdf'])->name('cetakAllPdf');
+    Route::get('downloadPdf', [PemeriksaanController::class, 'downloadPdf'])->name('downloadPdf');
 
-	//role
-	Route::get('role', [DashboardController::class, 'role'])->name('role');
-	Route::post('role', [DashboardController::class, 'tambah_role'])->name('role.post');
-	Route::post('role/{id}', [DashboardController::class, 'edit_role'])->name('role.edit');
-	Route::delete('hapus_role/{id}', [DashboardController::class, 'hapus_role'])->name('role.hapus');
+    //role
+    Route::get('role', [DashboardController::class, 'role'])->name('role');
+    Route::post('role', [DashboardController::class, 'tambah_role'])->name('role.post');
+    Route::post('role/{id}', [DashboardController::class, 'edit_role'])->name('role.edit');
+    Route::delete('hapus_role/{id}', [DashboardController::class, 'hapus_role'])->name('role.hapus');
 
-	//poli
-	Route::get('poli', [DashboardController::class, 'poli'])->name('poli');
-	Route::post('poli', [DashboardController::class, 'tambah_poli'])->name('poli.post');
-	Route::post('poli/{id}', [DashboardController::class, 'edit_poli'])->name('poli.edit');
-	Route::delete('hapus_poli/{id}', [DashboardController::class, 'hapus_poli'])->name('poli.hapus');
+    //poli
+    Route::get('poli', [DashboardController::class, 'poli'])->name('poli');
+    Route::post('poli', [DashboardController::class, 'tambah_poli'])->name('poli.post');
+    Route::post('poli/{id}', [DashboardController::class, 'edit_poli'])->name('poli.edit');
+    Route::delete('hapus_poli/{id}', [DashboardController::class, 'hapus_poli'])->name('poli.hapus');
 
-	//dokter
-	Route::get('dokter', [DashboardController::class, 'dokter'])->name('dokter');
-	Route::post('dokter', [DashboardController::class, 'tambah_dokter'])->name('dokter.post');
-	Route::post('dokter/{id}', [DashboardController::class, 'edit_dokter'])->name('dokter.edit');
-	Route::delete('hapus_dokter/{id}', [DashboardController::class, 'hapus_dokter'])->name('dokter.hapus');
+    //dokter
+    Route::get('dokter', [DashboardController::class, 'dokter'])->name('dokter');
+    Route::post('dokter', [DashboardController::class, 'tambah_dokter'])->name('dokter.post');
+    Route::post('dokter/{id}', [DashboardController::class, 'edit_dokter'])->name('dokter.edit');
+    Route::delete('hapus_dokter/{id}', [DashboardController::class, 'hapus_dokter'])->name('dokter.hapus');
 
-	#Dani
-	Route::get('noAntrian', [NoAntrianController::class, 'view'])->name('noAntrian');
+    #Dani
+    Route::get('noAntrian', [NoAntrianController::class, 'view'])->name('noAntrian');
 
-	Route::get('getAntrian', [NoAntrianController::class, 'viewAdmin'])->name('getAntrian');
-	Route::get('listAntrian/{id}', [NoAntrianController::class, 'listAntrian'])->name('listAntrian');
-	Route::get('doneAntrian/{id}', [NoAntrianController::class, 'doneAntrian'])->name('doneAntrian');
-	Route::get('backAntrian/{id}', [NoAntrianController::class, 'backAntrian'])->name('backAntrian');
-	Route::get('load_data', [NoAntrianController::class, 'load_data'])->name('load_data');
-	Route::get('load_dataNoAktif', [NoAntrianController::class, 'load_dataNoAktif'])->name('load_dataNoAktif');
+    Route::get('getAntrian', [NoAntrianController::class, 'viewAdmin'])->name('getAntrian');
+    Route::get('listAntrian/{id}', [NoAntrianController::class, 'listAntrian'])->name('listAntrian');
+    Route::get('doneAntrian/{id}', [NoAntrianController::class, 'doneAntrian'])->name('doneAntrian');
+    Route::get('backAntrian/{id}', [NoAntrianController::class, 'backAntrian'])->name('backAntrian');
+    Route::get('load_data', [NoAntrianController::class, 'load_data'])->name('load_data');
+    Route::get('load_dataNoAktif', [NoAntrianController::class, 'load_dataNoAktif'])->name('load_dataNoAktif');
 
-	Route::post('noAntrian/add', [NoAntrianController::class, 'add'])->name('noAntrian.add');
-	Route::get('cetakAntrian/{id}', [NoAntrianController::class, 'cetakAntrian'])->name('noAntrian.cetakAntrian');
+    Route::post('noAntrian/add', [NoAntrianController::class, 'add'])->name('noAntrian.add');
+    Route::get('cetakAntrian/{id}', [NoAntrianController::class, 'cetakAntrian'])->name('noAntrian.cetakAntrian');
 
-	#Pendaftar Export
-	Route::get('pendaftarExport', [PendaftaranController::class, 'pendaftarExport'])->name('pendaftarExport');
-	Route::get('/pendaftarExport/cetakAll', [PendaftaranController::class, 'cetakAll'])->name('pendaftarExport.cetakAll');
-	Route::get('/pendaftarExport/cetakExcelRow/{id}', [PendaftaranController::class, 'cetakExcelRow'])->name('pendaftarExport.cetakExcelRow');
-	Route::get('/pendaftarExport/cetakAllPdf', [PendaftaranController::class, 'cetakAllPdf'])->name('pendaftarExport.cetakAllPdf');
-	##Logout Dani
-	Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    #Pendaftar Export
+    Route::get('pendaftarExport', [PendaftaranController::class, 'pendaftarExport'])->name('pendaftarExport');
+    Route::get('/pendaftarExport/cetakAll', [PendaftaranController::class, 'cetakAll'])->name('pendaftarExport.cetakAll');
+    Route::get('/pendaftarExport/cetakExcelRow/{id}', [PendaftaranController::class, 'cetakExcelRow'])->name('pendaftarExport.cetakExcelRow');
+    Route::get('/pendaftarExport/cetakAllPdf', [PendaftaranController::class, 'cetakAllPdf'])->name('pendaftarExport.cetakAllPdf');
+    ##Logout Dani
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 ## Agus Kartu pasien

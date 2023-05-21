@@ -70,7 +70,7 @@ class PendaftaranController extends Controller
             ->setTitle("'" . Auth::user()->username . "'")
             ->setSubject("'" . Auth::user()->username . "'");
         $spreadsheet->setActiveSheetIndex(0)->setCellValue('A1', 'Puskesmas')
-        ->setCellValue('A2', 'Pemeriksaan: Dari Tanggal ' . $request->tanggal_awal . ' Sampai Tanggal ' . $request->tanggal_akhir . '')
+            ->setCellValue('A2', 'Pemeriksaan: Dari Tanggal ' . $request->tanggal_awal . ' Sampai Tanggal ' . $request->tanggal_akhir . '')
             ->setCellValue('A3', 'Dicetak: ' . date('Y-m-d') . '');
 
         $getPemeriksaan = DB::select('select p.*, u.full_name from pendaftaran p left join users u on p.id_user=u.id where p.created_at BETWEEN "' .  $request->tanggal_awal . '" and "' . $request->tanggal_akhir . '"');
@@ -140,7 +140,7 @@ class PendaftaranController extends Controller
             ->setTitle("'" . Auth::user()->username . "'")
             ->setSubject("'" . Auth::user()->username . "'");
         $spreadsheet->setActiveSheetIndex(0)->setCellValue('A1', 'Puskesmas')
-        ->setCellValue('A2', 'Pemeriksaan: ' . $getName[0]->full_name . '')
+            ->setCellValue('A2', 'Pemeriksaan: ' . $getName[0]->full_name . '')
             ->setCellValue('A3', 'Dicetak: ' . date('Y-m-d') . '');
 
         $getPemeriksaan = DB::select('select p.*, u.full_name from pendaftaran p left join users u on p.id_user=u.id where p.id_pendaftaran = "' . $id . '"');
@@ -187,6 +187,7 @@ class PendaftaranController extends Controller
     public function cetakAllPdf(Request $request)
     {
         $pendaftaran = DB::select('select p.*, u.full_name from pendaftaran p left join users u on p.id_user=u.id where p.created_at BETWEEN "' .  $request->tanggal_awal . '" and "' . $request->tanggal_akhir . '"');
+        // dd($pendaftaran);
         $data = [
             'title' => 'Welcome to Puskesmas',
             'date' => date('m/d/Y'),

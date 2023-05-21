@@ -30,24 +30,24 @@
                     <tbody>
 
                         @foreach ($pemeriksaan as $i => $dp)
-                        <tr>
-                            <td>{{ $i + 1 }}</td>
-                            <td>{{ $dp->full_name }}</td>
-                            <td>{{ $dp->antrian }}</td>
-                            <td>{{ $dp->nama_dokter }}</td>
-                            <td>
-                                @foreach (json_decode($dp->penyakit) as $key)
-                                {{ $key }},
-                                @endforeach
-                            </td>
-                            <td>
-                                @foreach (json_decode($dp->obat) as $key)
-                                {{ $key }},
-                                @endforeach
-                            </td>
-                            <td>{{ $dp->tgl_diperiksa }}</td>
+                            <tr>
+                                <td>{{ $i + 1 }}</td>
+                                <td>{{ $dp->full_name }}</td>
+                                <td>{{ $dp->antrian }}</td>
+                                <td>{{ $dp->nama_dokter }}</td>
+                                <td>
+                                    @foreach (json_decode($dp->penyakit) as $key)
+                                        {{ $key }},
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach (json_decode($dp->obat) as $key)
+                                        {{ $key }},
+                                    @endforeach
+                                </td>
+                                <td>{{ $dp->tgl_diperiksa }}</td>
 
-                        </tr>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
